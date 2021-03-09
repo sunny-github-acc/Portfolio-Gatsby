@@ -1,3 +1,46 @@
+@import "./variables";
+
+@import url("https://fonts.googleapis.com/css2?family=DotGothic16&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap");
+
+%flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+html {
+  box-sizing: border-box;
+  width: 100%;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  text-decoration: none;
+}
 body {
-    background-color: rgba(101, 253, 253, 0.459);
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+  font-family: "DotGothic16", Georgia, serif;
+  background: $lightViolet;
+}
+.nav {
+  @extend %flex;
+  padding: 25px;
+  background: $gradient;
+  .links {
+    @extend %flex;
+    justify-content: flex-end;
+    * {
+      padding-right: 20px;
+      padding-left: 20px;
+    }
+    a {
+      color: rgb(255, 255, 255);
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 20px;
+    }
+  }
 }
