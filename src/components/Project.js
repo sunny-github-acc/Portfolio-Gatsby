@@ -19,6 +19,11 @@ const Project = ({ project }) => {
           <img style={{ height: "50px" }} src={Link} alt="github logo" />
         </div>
       </div>
+      <div className="text">
+        <h1>{project.title}</h1>
+        <div className="content">{project.content}</div>
+        <h4>{project.tech}</h4>
+      </div>
     </section>
   )
 }

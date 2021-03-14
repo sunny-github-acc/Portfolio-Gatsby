@@ -13,6 +13,8 @@ const Hero = () => {
           <strong>developing software using latest technologies.</strong>
         </button>
       </h3>
+      I'm based in Lithuania, putting the most emphasis in building websites.{" "}
+      <button>Head this way for more details.</button>
       <button onClick={handleBtnContact}>Drop me a message</button>
     </section>
   )

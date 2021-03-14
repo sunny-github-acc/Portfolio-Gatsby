@@ -14,9 +14,21 @@ export default function Navbar() {
   return (
     <div>
       <nav className="nav">
-        <button onClick={handleBtnHome}>HOME</button>
-        <button onClick={handleBtnProjects}>PROJECTS</button>
-        <button onClick={handleBtnContact}>CONTACT</button>
+        <div className="btn-container">
+          <button className="btn" onClick={handleBtnHome}>
+            HOME
+          </button>
+        </div>
+        <div className="btn-container">
+          <button className="btn" onClick={handleBtnProjects}>
+            PROJECTS
+          </button>
+        </div>
+        <div className="btn-container">
+          <button className="btn" onClick={handleBtnContact}>
+            CONTACT
+          </button>
+        </div>
       </nav>
     </div>
   )

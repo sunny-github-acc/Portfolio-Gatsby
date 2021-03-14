@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=DotGothic16&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap");
-.nav, .nav .links {
+.nav, .nav .links, .hero,
+.contacts, .contacts .form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -32,12 +33,89 @@ body {
   min-height: 100%;
   font-family: "DotGothic16", Georgia, serif;
   background: white;
+  background: -webkit-gradient(linear, left top, right top, from(#ff829f), to(#b337e4));
+  background: linear-gradient(to right, #ff829f, #b337e4);
+}
+
+.btn-container {
+  padding: 0;
+  margin: 16px 10px;
+  border: 2px solid #ababab;
+  background-color: #fff;
+  /* Create pixelated corners in unit-list */
+}
+
+.btn-container .btn {
+  position: relative;
+  padding: 10px 10px;
+  border-bottom: 2px solid #ababab;
+  font-weight: bold;
+}
+
+.btn-container .btn:first-of-type {
+  background-color: #fff;
+  border-top: 2px solid #ababab;
+  margin-top: -4px;
+  padding-top: 6px;
+}
+
+.btn-container .btn:last-of-type {
+  margin-bottom: -4px;
+  background-color: #fff;
+  padding-bottom: 8px;
+}
+
+.btn-container .btn:first-of-type:before,
+.btn-container .btn:last-of-type:after {
+  content: "";
+  position: absolute;
+  left: 2px;
+  right: 2px;
+  display: block;
+  height: 2px;
+  background-color: #fff;
+}
+
+.btn-container .btn:first-of-type:before {
+  top: -4px;
+  border-top: 2px solid #ababab;
+}
+
+.btn-container .btn:last-of-type:after {
+  bottom: -4px;
+  border-bottom: 2px solid #ababab;
+}
+
+.btn-container .btn {
+  border: none;
+  background: orange;
+  padding: 0 20px 0px 20px;
+  font-size: 18px;
+  color: #d3d2df;
+  font-weight: 800;
+  cursor: pointer;
+  outline: none;
+}
+
+.btn-container .btn:focus, .btn-container .btn:hover {
+  color: white;
+}
+
+.pixelated {
+  -webkit-box-shadow: 0 -6px 0 -2px orange, 0 6px 0 -2px orange, 0 -12px 0 -4px orange, 0 12px 0 -4px orange, 0 -18px 0 -8px orange, 0 18px 0 -8px orange, 0 -24px 0 -12px orange, 0 24px 0 -12px orange, -2px 0 0 0 yellow, 2px 0 0 0 yellow, 0 -4px 0 0 yellow, 0 4px 0 0 yellow, 0 -10px 0 -2px yellow, 0 10px 0 -2px yellow, 0 -14px 0 -4px yellow, 0 14px 0 -4px yellow, 0 -20px 0 -8px yellow, 0 20px 0 -8px yellow, 0 -26px 0 -12px yellow, 0 26px 0 -12px yellow, -4px 0 0 0 white, 4px 0 0 0 white, 0 -2px 0 2px white, 0 2px 0 2px white, 0 -8px 0 0px white, 0 8px 0 0px white, 0 -12px 0 -2px white, 0 12px 0 -2px white, 0 -16px 0 -4px white, 0 16px 0 -4px white, 0 -22px 0 -8px white, 0 22px 0 -8px white, 0 -28px 0 -12px white, 0 28px 0 -12px white, -6px 0 0 0 yellow, 6px 0 0 0 yellow, 0 0 0 4px yellow, 0 -6px 0 2px yellow, 0 6px 0 2px yellow, 0 -10px 0 0 yellow, 0 10px 0 0 yellow, 0 -14px 0 -2px yellow, 0 14px 0 -2px yellow, 0 -18px 0 -4px yellow, 0 18px 0 -4px yellow, 0 -24px 0 -8px yellow, 0 24px 0 -8px yellow, 0 -30px 0 -12px yellow, 0 30px 0 -12px yellow;
+          box-shadow: 0 -6px 0 -2px orange, 0 6px 0 -2px orange, 0 -12px 0 -4px orange, 0 12px 0 -4px orange, 0 -18px 0 -8px orange, 0 18px 0 -8px orange, 0 -24px 0 -12px orange, 0 24px 0 -12px orange, -2px 0 0 0 yellow, 2px 0 0 0 yellow, 0 -4px 0 0 yellow, 0 4px 0 0 yellow, 0 -10px 0 -2px yellow, 0 10px 0 -2px yellow, 0 -14px 0 -4px yellow, 0 14px 0 -4px yellow, 0 -20px 0 -8px yellow, 0 20px 0 -8px yellow, 0 -26px 0 -12px yellow, 0 26px 0 -12px yellow, -4px 0 0 0 white, 4px 0 0 0 white, 0 -2px 0 2px white, 0 2px 0 2px white, 0 -8px 0 0px white, 0 8px 0 0px white, 0 -12px 0 -2px white, 0 12px 0 -2px white, 0 -16px 0 -4px white, 0 16px 0 -4px white, 0 -22px 0 -8px white, 0 22px 0 -8px white, 0 -28px 0 -12px white, 0 28px 0 -12px white, -6px 0 0 0 yellow, 6px 0 0 0 yellow, 0 0 0 4px yellow, 0 -6px 0 2px yellow, 0 6px 0 2px yellow, 0 -10px 0 0 yellow, 0 10px 0 0 yellow, 0 -14px 0 -2px yellow, 0 14px 0 -2px yellow, 0 -18px 0 -4px yellow, 0 18px 0 -4px yellow, 0 -24px 0 -8px yellow, 0 24px 0 -8px yellow, 0 -30px 0 -12px yellow, 0 30px 0 -12px yellow;
 }
 
 .nav {
   padding: 25px;
   background: -webkit-gradient(linear, left top, right top, from(#ff829f), to(#b337e4));
   background: linear-gradient(to right, #ff829f, #b337e4);
+  padding: 5px;
+}
+
+.nav .btn-container {
+  margin: 20px 25px 15px 15px;
+  /* and that, will result in a 10px gap */
 }
 
 .nav .links {
@@ -55,5 +133,34 @@ body {
   color: white;
   font-family: "Noto Sans JP", sans-serif;
   font-size: 20px;
+}
+
+.hero,
+.contacts {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  padding: 20px;
+  border: 1px solid black;
+}
+
+.contacts .form {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.glide__bullets {
+  display: none;
 }
 /*# sourceMappingURL=global.css.map */

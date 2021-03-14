@@ -3,9 +3,6 @@
 @import url("https://fonts.googleapis.com/css2?family=DotGothic16&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap");
 
-@import "node_modules/@glidejs/glide/src/assets/sass/glide.core";
-@import "node_modules/@glidejs/glide/src/assets/sass/glide.theme";
-
 %flex {
   display: flex;
   align-items: center;
@@ -28,11 +25,111 @@ body {
   min-height: 100%;
   font-family: "DotGothic16", Georgia, serif;
   background: $lightViolet;
+  background: $gradient;
+}
+.btn-container {
+  padding: 0;
+  margin: 16px 10px;
+  border: 2px solid #ababab;
+  background-color: #fff;
+
+  .btn {
+    position: relative;
+    padding: 10px 10px;
+    border-bottom: 2px solid #ababab;
+    font-weight: bold;
+  }
+
+  /* Create pixelated corners in unit-list */
+
+  .btn:first-of-type {
+    background-color: #fff;
+    border-top: 2px solid #ababab;
+    margin-top: -4px;
+    padding-top: 6px;
+  }
+
+  .btn:last-of-type {
+    margin-bottom: -4px;
+    background-color: #fff;
+    padding-bottom: 8px;
+  }
+
+  .btn:first-of-type:before,
+  .btn:last-of-type:after {
+    content: "";
+    position: absolute;
+    left: 2px;
+    right: 2px;
+    display: block;
+    height: 2px;
+    background-color: #fff;
+  }
+
+  .btn:first-of-type:before {
+    top: -4px;
+    border-top: 2px solid #ababab;
+  }
+
+  .btn:last-of-type:after {
+    bottom: -4px;
+    border-bottom: 2px solid #ababab;
+  }
+
+  .btn {
+    border: none;
+    background: $pixelatedBackground;
+    padding: 0 20px 0px 20px;
+    font-size: 18px;
+    color: $pixelatedColor;
+    font-weight: 800;
+    cursor: pointer;
+    outline: none;
+    &:focus,
+    &:hover {
+      color: $pixelatedColorFocus;
+    }
+  }
+}
+.pixelated {
+  box-shadow:
+      /* Inner Background Color -- Same as inner */ 0 -6px 0 -2px
+      $pixelatedBackground,
+    0 6px 0 -2px $pixelatedBackground, 0 -12px 0 -4px $pixelatedBackground,
+    0 12px 0 -4px $pixelatedBackground, 0 -18px 0 -8px $pixelatedBackground,
+    0 18px 0 -8px $pixelatedBackground, 0 -24px 0 -12px $pixelatedBackground,
+    0 24px 0 -12px $pixelatedBackground,
+    /* Inner Border */ -2px 0 0 0$pixelatedBorder, 2px 0 0 0$pixelatedBorder,
+    0 -4px 0 0$pixelatedBorder, 0 4px 0 0$pixelatedBorder,
+    0 -10px 0 -2px$pixelatedBorder, 0 10px 0 -2px$pixelatedBorder,
+    0 -14px 0 -4px$pixelatedBorder, 0 14px 0 -4px$pixelatedBorder,
+    0 -20px 0 -8px$pixelatedBorder, 0 20px 0 -8px$pixelatedBorder,
+    0 -26px 0 -12px$pixelatedBorder, 0 26px 0 -12px$pixelatedBorder,
+    /* Middle Border -- Accent */ -4px 0 0 0 $pixelatedAccent,
+    4px 0 0 0 $pixelatedAccent, 0 -2px 0 2px $pixelatedAccent,
+    0 2px 0 2px $pixelatedAccent, 0 -8px 0 0px $pixelatedAccent,
+    0 8px 0 0px $pixelatedAccent, 0 -12px 0 -2px $pixelatedAccent,
+    0 12px 0 -2px $pixelatedAccent, 0 -16px 0 -4px $pixelatedAccent,
+    0 16px 0 -4px $pixelatedAccent, 0 -22px 0 -8px $pixelatedAccent,
+    0 22px 0 -8px $pixelatedAccent, 0 -28px 0 -12px $pixelatedAccent,
+    0 28px 0 -12px $pixelatedAccent,
+    /* Outer Border */ -6px 0 0 0$pixelatedBorder, 6px 0 0 0$pixelatedBorder,
+    0 0 0 4px$pixelatedBorder, 0 -6px 0 2px$pixelatedBorder,
+    0 6px 0 2px$pixelatedBorder, 0 -10px 0 0$pixelatedBorder,
+    0 10px 0 0$pixelatedBorder, 0 -14px 0 -2px$pixelatedBorder,
+    0 14px 0 -2px$pixelatedBorder, 0 -18px 0 -4px$pixelatedBorder,
+    0 18px 0 -4px$pixelatedBorder, 0 -24px 0 -8px$pixelatedBorder,
+    0 24px 0 -8px$pixelatedBorder, 0 -30px 0 -12px$pixelatedBorder,
+    0 30px 0 -12px$pixelatedBorder;
 }
 .nav {
   @extend %flex;
   padding: 25px;
   background: $gradient;
+  padding: 5px;
+  .btn-container {
+    margin: 20px 25px 15px 15px; /* and that, will result in a 10px gap */
+  }
   .links {
     @extend %flex;
     justify-content: flex-end;
@@ -46,4 +143,27 @@ body {
       font-size: 20px;
     }
   }
+}
+.hero,
+.contacts {
+  @extend %flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 20px;
+  border: 1px solid black;
+}
+.contacts {
+  .form {
+    @extend %flex;
+    flex-direction: column;
+  }
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+.glide__bullets {
+  display: none;
 }

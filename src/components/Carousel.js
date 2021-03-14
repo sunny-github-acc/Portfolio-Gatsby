@@ -25,7 +25,7 @@ function Carousel({ components }) {
         <div className="glide__track" data-glide-el="track">
           <ul className="glide__slides">
             {components.map((comp, index) => (
-              <li key={index}>{comp}</li>
+              <li className=" carousel-slides" key={index}>{comp}</li>
             ))}
           </ul>
         </div>
@@ -34,13 +34,13 @@ function Carousel({ components }) {
             className="glide__arrow glide__arrow--left"
             data-glide-dir="<"
           >
-            &#8249;
+            &lt;
           </button>
           <button
             className="glide__arrow glide__arrow--right"
             data-glide-dir=">"
           >
-            &#8250;
+            &gt;
           </button>
         </div>
         <div className="glide__bullets" data-glide-el="controls[nav]">
