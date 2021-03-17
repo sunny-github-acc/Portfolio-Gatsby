@@ -20,113 +20,23 @@ html {
   text-decoration: none;
 }
 body {
+  height: 100vh;
   margin: 0;
   width: 100%;
   min-height: 100%;
   font-family: "DotGothic16", Georgia, serif;
-  background: $lightViolet;
   background: $gradient;
-}
-.btn-container {
-  padding: 0;
-  margin: 16px 10px;
-  border: 2px solid #ababab;
-  background-color: #fff;
-
-  .btn {
-    position: relative;
-    padding: 10px 10px;
-    border-bottom: 2px solid #ababab;
-    font-weight: bold;
-  }
-
-  /* Create pixelated corners in unit-list */
-
-  .btn:first-of-type {
-    background-color: #fff;
-    border-top: 2px solid #ababab;
-    margin-top: -4px;
-    padding-top: 6px;
-  }
-
-  .btn:last-of-type {
-    margin-bottom: -4px;
-    background-color: #fff;
-    padding-bottom: 8px;
-  }
-
-  .btn:first-of-type:before,
-  .btn:last-of-type:after {
-    content: "";
-    position: absolute;
-    left: 2px;
-    right: 2px;
-    display: block;
-    height: 2px;
-    background-color: #fff;
-  }
-
-  .btn:first-of-type:before {
-    top: -4px;
-    border-top: 2px solid #ababab;
-  }
-
-  .btn:last-of-type:after {
-    bottom: -4px;
-    border-bottom: 2px solid #ababab;
-  }
-
-  .btn {
-    border: none;
-    background: $pixelatedBackground;
-    padding: 0 20px 0px 20px;
-    font-size: 18px;
-    color: $pixelatedColor;
-    font-weight: 800;
-    cursor: pointer;
-    outline: none;
-    &:focus,
-    &:hover {
-      color: $pixelatedColorFocus;
-    }
-  }
-}
-.pixelated {
-  box-shadow:
-      /* Inner Background Color -- Same as inner */ 0 -6px 0 -2px
-      $pixelatedBackground,
-    0 6px 0 -2px $pixelatedBackground, 0 -12px 0 -4px $pixelatedBackground,
-    0 12px 0 -4px $pixelatedBackground, 0 -18px 0 -8px $pixelatedBackground,
-    0 18px 0 -8px $pixelatedBackground, 0 -24px 0 -12px $pixelatedBackground,
-    0 24px 0 -12px $pixelatedBackground,
-    /* Inner Border */ -2px 0 0 0$pixelatedBorder, 2px 0 0 0$pixelatedBorder,
-    0 -4px 0 0$pixelatedBorder, 0 4px 0 0$pixelatedBorder,
-    0 -10px 0 -2px$pixelatedBorder, 0 10px 0 -2px$pixelatedBorder,
-    0 -14px 0 -4px$pixelatedBorder, 0 14px 0 -4px$pixelatedBorder,
-    0 -20px 0 -8px$pixelatedBorder, 0 20px 0 -8px$pixelatedBorder,
-    0 -26px 0 -12px$pixelatedBorder, 0 26px 0 -12px$pixelatedBorder,
-    /* Middle Border -- Accent */ -4px 0 0 0 $pixelatedAccent,
-    4px 0 0 0 $pixelatedAccent, 0 -2px 0 2px $pixelatedAccent,
-    0 2px 0 2px $pixelatedAccent, 0 -8px 0 0px $pixelatedAccent,
-    0 8px 0 0px $pixelatedAccent, 0 -12px 0 -2px $pixelatedAccent,
-    0 12px 0 -2px $pixelatedAccent, 0 -16px 0 -4px $pixelatedAccent,
-    0 16px 0 -4px $pixelatedAccent, 0 -22px 0 -8px $pixelatedAccent,
-    0 22px 0 -8px $pixelatedAccent, 0 -28px 0 -12px $pixelatedAccent,
-    0 28px 0 -12px $pixelatedAccent,
-    /* Outer Border */ -6px 0 0 0$pixelatedBorder, 6px 0 0 0$pixelatedBorder,
-    0 0 0 4px$pixelatedBorder, 0 -6px 0 2px$pixelatedBorder,
-    0 6px 0 2px$pixelatedBorder, 0 -10px 0 0$pixelatedBorder,
-    0 10px 0 0$pixelatedBorder, 0 -14px 0 -2px$pixelatedBorder,
-    0 14px 0 -2px$pixelatedBorder, 0 -18px 0 -4px$pixelatedBorder,
-    0 18px 0 -4px$pixelatedBorder, 0 -24px 0 -8px$pixelatedBorder,
-    0 24px 0 -8px$pixelatedBorder, 0 -30px 0 -12px$pixelatedBorder,
-    0 30px 0 -12px$pixelatedBorder;
 }
 .nav {
   @extend %flex;
   padding: 25px;
-  background: $gradient;
   padding: 5px;
+  background: linear-gradient(
+    to bottom,
+    lighten($comicBackground, 20%),
+    $comicBackground
+  );
+  box-shadow: 0px 5px 5px 2px $comicBackground;
   .btn-container {
     margin: 20px 25px 15px 15px; /* and that, will result in a 10px gap */
   }
@@ -144,15 +54,34 @@ body {
     }
   }
 }
-.hero,
-.contacts {
+.glide,
+.glide__track,
+.glide__slides {
+  height: 100%;
+}
+.main {
+  height: calc(100vh - #{$footerHeight});
+}
+.hero {
+  max-height: 80vh;
   @extend %flex;
   flex-direction: column;
-  width: 100%;
-  padding: 20px;
+  justify-content: space-between;
+  flex-direction: column-reverse;
+  .small-talk {
+    justify-content: flex-end;
+    min-height: 100vh;
+    padding: 20px;
+    margin-bottom: 50px;
+  }
+}
+.small-talk,
+.contact {
+  @extend %flex;
+  flex-direction: column;
   border: 1px solid black;
 }
-.contacts {
+.contact {
   .form {
     @extend %flex;
     flex-direction: column;
@@ -166,4 +95,119 @@ body {
 }
 .glide__bullets {
   display: none;
+}
+
+.bubble {
+  max-width: 80%;
+  white-space: normal;
+  word-break: break-word;
+  position: relative;
+  display: inline-block;
+  margin: 10px 9px 29px 6px;
+  text-align: right;
+  align-self: flex-start;
+  font-weight: 700;
+  background-color: $comicBackground;
+  color: $comicColor;
+  padding: 5px;
+  box-shadow: 0 -3px $comicBackground, 0 -6px $comicBorder,
+    3px 0 $comicBackground, 3px -3px $comicBorder, 6px 0 $comicBorder,
+    0 3px $comicBackground, 0 6px $comicBorder, -3px 0 $comicBackground,
+    -3px 3px $comicBorder, -6px 0 $comicBorder, -3px -3px $comicBorder,
+    3px 3px $comicBorder, 3px 9px $comicShadow, 6px 6px $comicShadow,
+    9px 3px $comicShadow;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+
+  &::before,
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    left: 20%;
+  }
+
+  &::after {
+    background: $comicBackground;
+    width: 9px;
+    height: 3px;
+    bottom: -14px;
+    margin-left: 6px;
+    box-shadow: -3px 0 $comicBorder, 3px 0 $comicBorder,
+      3px 3px $comicBackground, 0px 3px $comicBorder, 6px 3px $comicBorder,
+      9px 3px $comicShadow, 3px 6px $comicBorder, 6px 6px $comicBorder,
+      9px 6px $comicShadow, 6px 9px $comicShadow;
+  }
+  &::before {
+    width: 15px;
+    height: 8px;
+    background: $comicBackground;
+    bottom: -11px;
+    border-left: 3px solid $comicBorder;
+    border-right: 3px solid $comicBorder;
+  }
+}
+.bubble.-right {
+  align-self: flex-end;
+}
+.bubble.-right::after,
+.bubble.-right::before {
+  left: auto;
+  right: 20%;
+}
+.bubble.-right::after {
+  margin-left: 0;
+  margin-right: 6px;
+  box-shadow: 3px 0 $comicBorder, -3px 0 $comicBorder, -3px 3px $comicBackground,
+    0px 3px $comicBorder, -6px 3px $comicBorder, -3px 6px $comicBorder,
+    -6px 6px $comicBorder, -3px 9px $comicShadow, 0 6px $comicShadow,
+    3px 3px $comicShadow, 6px 0px $comicShadow;
+}
+
+.btn-container {
+  padding: 0;
+  background: $pixelatedBackground;
+  box-shadow: 0 -6px 0 -2px $pixelatedBackground,
+    0 6px 0 -2px $pixelatedBackground, 0 -12px 0 -4px $pixelatedBackground,
+    0 12px 0 -4px $pixelatedBackground, 0 -18px 0 -8px $pixelatedBackground,
+    0 18px 0 -8px $pixelatedBackground, 0 -24px 0 -12px $pixelatedBackground,
+    0 24px 0 -12px $pixelatedBackground,
+    /* Inner Border */ -2px 0 0 0 $pixelatedBorder, 2px 0 0 0 $pixelatedBorder,
+    0 -4px 0 0 $pixelatedBorder, 0 4px 0 0 $pixelatedBorder,
+    0 -10px 0 -2px $pixelatedBorder, 0 10px 0 -2px $pixelatedBorder,
+    0 -14px 0 -4px $pixelatedBorder, 0 14px 0 -4px $pixelatedBorder,
+    0 -20px 0 -8px $pixelatedBorder, 0 20px 0 -8px $pixelatedBorder,
+    0 -26px 0 -12px $pixelatedBorder, 0 26px 0 -12px $pixelatedBorder,
+    /* Middle Border -- Accent */ -4px 0 0 0 $pixelatedOuterBorder,
+    4px 0 0 0 $pixelatedOuterBorder, 0 -2px 0 2px$pixelatedOuterBorder,
+    0 2px 0 2px$pixelatedOuterBorder, 0 -8px 0 0px$pixelatedOuterBorder,
+    0 8px 0 0px$pixelatedOuterBorder, 0 -12px 0 -2px$pixelatedOuterBorder,
+    0 12px 0 -2px$pixelatedOuterBorder, 0 -16px 0 -4px$pixelatedOuterBorder,
+    0 16px 0 -4px$pixelatedOuterBorder, 0 -22px 0 -8px$pixelatedOuterBorder,
+    0 22px 0 -8px$pixelatedOuterBorder, 0 -28px 0 -12px$pixelatedOuterBorder,
+    0 28px 0 -12px$pixelatedOuterBorder,
+    /* Outer Border */ -6px 0 0 0 $pixelatedShadow, 6px 0 0 0 $pixelatedShadow,
+    0 0 0 4px $pixelatedShadow, 0 -6px 0 2px $pixelatedShadow,
+    0 6px 0 2px $pixelatedShadow, 0 -10px 0 0 $pixelatedShadow,
+    0 10px 0 0 $pixelatedShadow, 0 -14px 0 -2px $pixelatedShadow,
+    0 14px 0 -2px $pixelatedShadow, 0 -18px 0 -4px $pixelatedShadow,
+    0 18px 0 -4px $pixelatedShadow, 0 -24px 0 -8px $pixelatedShadow,
+    0 24px 0 -8px $pixelatedShadow, 0 -30px 0 -12px $pixelatedShadow,
+    0 30px 0 -12px $pixelatedShadow;
+  .btn {
+    border: none;
+    background: transparent;
+    padding: 0 20px 0px 20px;
+    font-size: 20px;
+    color: $pixelatedColor;
+    font-weight: 800;
+    cursor: pointer;
+    outline: none;
+    &:focus,
+    &:hover {
+      color: $pixelatedColorFocus;
+    }
+  }
 }

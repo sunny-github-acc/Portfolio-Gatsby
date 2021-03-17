@@ -10,9 +10,7 @@ import Projects from "../components/Projects"
 export default function Home() {
   return (
     <Layout>
-      <div className={"container"}>
-        <Carousel components={[<Hero />, <Projects />, <Contact />]} />
-      </div>
+      <Carousel components={[<Hero />, <Projects />, <Contact />]} />
     </Layout>
   )
 }
