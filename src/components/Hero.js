@@ -34,8 +34,8 @@ const Hero = () => {
 
   const handleClick = () => {
     if (allTexts.length) {
-      setTexts(prev => (prev ? [...prev, allTexts[0]] : [allTexts[0]]))
-      setAllTexts(prev => prev.shift())
+      setTexts(prev => (prev ? [...prev, [allTexts[0]]] : [allTexts[0]]))
+      setAllTexts(prev => prev.slice(1))
     }
   }
 
