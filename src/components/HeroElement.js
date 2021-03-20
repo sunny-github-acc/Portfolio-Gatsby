@@ -1,12 +1,6 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 
-const HeroElement = ({ text }) => {
-  const [classValue, setClassValue] = useState("bubble -right hide")
-  useEffect(() => {
-    setTimeout(() => {
-      setClassValue("bubble -right")
-    }, 1000)
-  }, [])
-  return <>{text && <h3 className={classValue}>{text}</h3>}</>
+const HeroElement = ({ text, classValue }) => {
+  return <h3 className={classValue}>{text}</h3>
 }
 export default HeroElement

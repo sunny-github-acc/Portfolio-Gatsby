@@ -1,80 +1,87 @@
 import React, { useEffect, useState } from "react"
+import HeroElement from "./HeroElement"
 
 const HeroElements = ({ texts }) => {
-  const [classValue, setClassValue] = useState("bubble -right hide")
-  const [stateTexts, setStateTexts] = useState([])
-  let t
+  const [classValue, setClassValue] = useState("bubble hide")
 
-  const initiateTexts = texts => {
-    let textsArray = texts[0]
-    let textsIndex = texts[1]
-
-    while (textsArray.length) {
-      textsArray.pop()
-    }
-  }
-
-  const initTexts = texts => {
-    setTimeout(() => {
-      texts = ["texts, texts"]
-    }, 1000)
-    return [texts]
-  }
-
-  const initStateTexts = text => {
-    text.map(
-      (t, index) => setStateTexts(prev => [...prev, t])
-      // setTimeout(() => {
-      // }, 1000 * (index + 1))
-    )
-  }
+  const [newTexts, setNewTexts] = useState([])
+  const [oldTexts, setOldTexts] = useState()
 
   useEffect(() => {
-    // setTimeout(() => {
-    //   setClassValue("bubble -right")
-    // }, 1000)
-  }, [])
+    const handleTexts = () => {
+      if (!texts) return
+
+      let newT = []
+      let oldT = []
+
+      texts.map((text, index) => {
+        if (texts.length - 1 === index) {
+          console.log(
+            "🚀 ~ file: HeroElements.js ~ line 19 ~ texts.map ~ texts",
+            text[0][0]
+          )
+          for (let i = 0; i < text.length; i++) {
+            setNewTexts([])
+            setTimeout(() => {
+              setClassValue("bubble ")
+            }, 1000 * i + 250)
+            setTimeout(() => {
+              setClassValue("bubble hide ")
+              newT.push(text[i])
+              setNewTexts([...newT])
+            }, 1000 * i)
+          }
+        } else {
+          text.map(t => oldT.push(t))
+        }
+        return null
+      })
+
+      setOldTexts([...oldT])
+    }
+    handleTexts()
+  }, [texts])
 
   return (
     <>
-      {texts &&
-        texts.map((text, index) => {
+      {oldTexts &&
+        oldTexts.map((text, index) => {
           if (text.length > 1) {
-            if (texts.length - 1 === index) {
-              initStateTexts(text)
-              return stateTexts.map((t, i) => (
-                <h3
-                  key={"t" + i}
-                  className={text.length + 4 < i ? classValue : "bubble -right"}
-                >
-                  {t} :)
-                </h3>
-              ))
-            } else {
-              initiateTexts([text, index])
+            text.map((t, i) => {
               return (
-                <h3
-                  key={"t" + index}
-                  className={
-                    text.length + 4 < index ? classValue : "bubble -right"
-                  }
-                >
-                  {t}
+                <h3 key={"o" + i} className={"bubble " + t["side"]}>
+                  {t["text"]}
                 </h3>
               )
-            }
+            })
           } else {
             return (
-              <h3
-                key={index}
-                className={
-                  texts.length - 1 === index
-                    ? classValue
-                    : "bubble -right" + texts.length + index
-                }
-              >
-                {text}:))
+              <h3 key={"old" + index} className={"bubble " + text["side"]}>
+                {text["text"]}
               </h3>
+            )
+          }
+          return null
+        })}
+      {newTexts &&
+        newTexts.map((text, index) => {
+          if (newTexts.length - 1 === index) {
+            return (
+              <HeroElement
+                key={"n" + index}
+                text={text["text"]}
+                index={index}
+                classValue={classValue + text["side"]}
+              />
+            )
+          } else {
+            return (
+              <HeroElement
+                classValue={"bubble " + text["side"]}
+                key={"new" + index}
+                text={text["text"]}
+                index={index}
+              />
             )
           }
         })}
