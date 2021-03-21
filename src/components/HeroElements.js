@@ -2,10 +2,9 @@ import React, { useEffect, useState } from "react"
 import HeroElement from "./HeroElement"
 
 const HeroElements = ({ texts }) => {
-  const [classValue, setClassValue] = useState("bubble hide")
-
   const [newTexts, setNewTexts] = useState([])
   const [oldTexts, setOldTexts] = useState()
+  const [classValue, setClassValue] = useState("bubble hide")
 
   useEffect(() => {
     const handleTexts = () => {
@@ -16,10 +15,6 @@ const HeroElements = ({ texts }) => {
 
       texts.map((text, index) => {
         if (texts.length - 1 === index) {
-          console.log(
-            "🚀 ~ file: HeroElements.js ~ line 19 ~ texts.map ~ texts",
-            text[0][0]
-          )
           for (let i = 0; i < text.length; i++) {
             setNewTexts([])
             setTimeout(() => {

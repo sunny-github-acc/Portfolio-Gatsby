@@ -1,10 +1,19 @@
 import React, { useEffect, useState } from "react"
 import HeroElements from "./HeroElements"
+import HeroInput from "./HeroInput"
 import { handleBtnContact, handleBtnProjects } from "./Navbar"
 
 const Hero = () => {
-  const [texts, setTexts] = useState()
-  const [allTexts, setAllTexts] = useState([
+  const [displayedTexts, setDisplayedTexts] = useState()
+  const [visitorsText, setVisitorsText] = useState({ 0: ":)", name: ":)" })
+  const [visitorsInfo, setVisitorsInfo] = useState([
+    "name",
+    "email",
+    "subject",
+    "message",
+  ])
+  const [input, setInput] = useState()
+  const [awaitingTexts, setAwaitingTexts] = useState([
     [
       { text: <span key="why1">Hello there!</span>, side: " -right " },
       {
@@ -19,6 +28,14 @@ const Hero = () => {
       { text: <span key="why3"> How may I call you?</span>, side: " -right " },
     ],
     [
+      {
+        text: <span key="why44">{visitorsText["name"]}</span>,
+        side: " ",
+      },
+      {
+        text: <span key="why44">{visitorsText[0]}</span>,
+        side: " ",
+      },
       {
         text: (
           <span key="why4">
@@ -35,8 +52,16 @@ const Hero = () => {
     ],
     [
       {
+        text: <span key="why44">:)</span>,
+        side: " ",
+      },
+      {
         text: <span key="why5">Head this way for more details.</span>,
         side: " -right ",
+      },
+      {
+        text: <span key="why44">:)</span>,
+        side: " ",
       },
     ],
     [
@@ -52,21 +77,39 @@ const Hero = () => {
     ],
   ])
 
+  const handleSubmit = e => {
+    e.preventDefault()
+    setVisitorsInfo(prev => prev.slice(1))
+    console.log(visitorsText)
+    console.log(visitorsInfo)
+  }
+
+  const handleInput = e => {
+    setVisitorsText(prev => ({ ...prev, [visitorsInfo[0]]: e.target.value }))
+    console.log(visitorsText)
+  }
+
   const handleClick = () => {
-    if (allTexts.length) {
-      setTexts(prev => (prev ? [...prev, allTexts[0]] : [allTexts[0]]))
-      setAllTexts(prev => prev.slice(1))
+    if (awaitingTexts.length) {
+      console.log(visitorsText)
+      setDisplayedTexts(prev =>
+        prev ? [...prev, awaitingTexts[0]] : [awaitingTexts[0]]
+      )
+      setAwaitingTexts(prev => prev.slice(1))
     }
   }
 
   useEffect(() => {
-    handleClick()
-  }, [])
+    console.log(visitorsText)
+  }, [visitorsText])
+
+  if (!displayedTexts) handleClick()
 
   return (
     <section className="hero ">
       <div className="small-talk">
-        <HeroElements texts={texts} />
+        <HeroElements texts={displayedTexts} />
+        <HeroInput handleSubmit={handleSubmit} handleInput={handleInput} />
         <button onClick={handleClick}>:)</button>
       </div>
     </section>
