@@ -1,19 +1,25 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import HeroElements from "./HeroElements"
 import HeroInput from "./HeroInput"
-import { handleBtnContact, handleBtnProjects } from "./Navbar"
+// import { handleBtnContact, handleBtnProjects } from "./Navbar"
 
 const Hero = () => {
-  const [displayedTexts, setDisplayedTexts] = useState()
-  const [visitorsText, setVisitorsText] = useState({ 0: ":)", name: ":)" })
-  const [visitorsInfo, setVisitorsInfo] = useState([
+  const [visitorsInput, setVisitorsInput] = useState([])
+  const [visitorsAnswers, setVisitorsAnswers] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  })
+  const [visitorsQuestions, setVisitorsQuestions] = useState([
     "name",
     "email",
     "subject",
     "message",
   ])
-  const [input, setInput] = useState()
-  const [awaitingTexts, setAwaitingTexts] = useState([
+  const [displayedTexts, setDisplayedTexts] = useState([])
+  const [submitDisabled, setSubmitDisabled] = useState(false)
+  const scriptedTexts = [
     [
       { text: <span key="why1">Hello there!</span>, side: " -right " },
       {
@@ -29,20 +35,15 @@ const Hero = () => {
     ],
     [
       {
-        text: <span key="why44">{visitorsText["name"]}</span>,
-        side: " ",
-      },
-      {
-        text: <span key="why44">{visitorsText[0]}</span>,
+        text: <span key="why44">{visitorsAnswers["name"]}</span>,
         side: " ",
       },
       {
         text: (
           <span key="why4">
-            I enjoy{" "}
-            <button onClick={handleBtnProjects}>
-              <strong>developing software </strong>
-            </button>
+            I enjoy {/* <button onClick={handleBtnProjects}> */}
+            <strong>developing software </strong>
+            {/* </button> */}
             using latest technologies, putting the most emphasis in building
             websites.
           </span>
@@ -52,65 +53,75 @@ const Hero = () => {
     ],
     [
       {
-        text: <span key="why44">:)</span>,
+        text: <span key="why44">{visitorsAnswers["email"]}</span>,
         side: " ",
       },
       {
         text: <span key="why5">Head this way for more details.</span>,
         side: " -right ",
       },
-      {
-        text: <span key="why44">:)</span>,
-        side: " ",
-      },
     ],
     [
       {
+        text: <span key="why44">{visitorsAnswers["subject"]}</span>,
+        side: " ",
+      },
+      {
         text: (
           <span key="why6">
-            Why don't you <button onClick={handleBtnContact}>tell me</button>{" "}
+            {/* Why don't you <button onClick={handleBtnContact}>tell me</button>{" "} */}
             more about yourself?
           </span>
         ),
         side: " -right ",
       },
     ],
-  ])
+    [
+      {
+        text: <span key="why44">{visitorsAnswers["message"]}</span>,
+        side: " ",
+      },
+    ],
+  ]
 
   const handleSubmit = e => {
-    e.preventDefault()
-    setVisitorsInfo(prev => prev.slice(1))
-    console.log(visitorsText)
-    console.log(visitorsInfo)
-  }
-
-  const handleInput = e => {
-    setVisitorsText(prev => ({ ...prev, [visitorsInfo[0]]: e.target.value }))
-    console.log(visitorsText)
-  }
-
-  const handleClick = () => {
-    if (awaitingTexts.length) {
-      console.log(visitorsText)
-      setDisplayedTexts(prev =>
-        prev ? [...prev, awaitingTexts[0]] : [awaitingTexts[0]]
-      )
-      setAwaitingTexts(prev => prev.slice(1))
+    if (e) e.preventDefault()
+    if (!visitorsInput) return setVisitorsInput("")
+    if (displayedTexts.length !== scriptedTexts.length) {
+      if (displayedTexts.length) setVisitorsQuestions(prev => prev.slice(1))
+      setDisplayedTexts([...scriptedTexts.slice(0, displayedTexts.length + 1)])
     }
+    setVisitorsInput("")
+  }
+  const handleSubmitDisabled = isTrue => {
+    setSubmitDisabled(isTrue)
+  }
+  const handleInput = e => {
+    setVisitorsInput(e.target.value)
+    setVisitorsAnswers({
+      ...visitorsAnswers,
+      [visitorsQuestions[0]]: e.target.value,
+    })
   }
 
-  useEffect(() => {
-    console.log(visitorsText)
-  }, [visitorsText])
-
-  if (!displayedTexts) handleClick()
+  if (!displayedTexts.length) handleSubmit()
+  console.log(
+    "🚀 ~ file: Hero.js ~ line 106 ~ Hero ~ handleSubmit",
+    submitDisabled
+  )
 
   return (
     <section className="hero ">
       <div className="small-talk">
-        <HeroElements texts={displayedTexts} />
-        <HeroInput handleSubmit={handleSubmit} handleInput={handleInput} />
-        <button onClick={handleClick}>:)</button>
+        <HeroElements
+          texts={displayedTexts}
+          handleSubmitDisabled={handleSubmitDisabled}
+        />
+        <HeroInput
+          visitorsInput={visitorsInput}
+          handleSubmit={handleSubmit}
+          handleInput={handleInput}
+        />
       </div>
     </section>
   )

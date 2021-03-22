@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react"
 import HeroElement from "./HeroElement"
 
-const HeroElements = ({ texts }) => {
+const HeroElements = ({ texts, handleSubmitDisabled }) => {
   const [newTexts, setNewTexts] = useState([])
   const [oldTexts, setOldTexts] = useState()
-  const [classValue, setClassValue] = useState("bubble hide")
+  const [classValue, setClassValue] = useState(" bubble hide ")
 
   useEffect(() => {
     const handleTexts = () => {
       if (!texts) return
-
       let newT = []
       let oldT = []
 
+      handleSubmitDisabled(true)
       texts.map((text, index) => {
         if (texts.length - 1 === index) {
           for (let i = 0; i < text.length; i++) {
@@ -44,41 +44,36 @@ const HeroElements = ({ texts }) => {
           if (text.length > 1) {
             text.map((t, i) => {
               return (
-                <h3 key={"o" + i} className={"bubble " + t["side"]}>
-                  {t["text"]}
-                </h3>
+                <HeroElement
+                  key={"o" + i}
+                  text={t["text"]}
+                  classValue={"bubble " + t["side"]}
+                />
               )
             })
           } else {
             return (
-              <h3 key={"old" + index} className={"bubble " + text["side"]}>
-                {text["text"]}
-              </h3>
+              <HeroElement
+                key={"old" + index}
+                text={text["text"]}
+                classValue={"bubble " + text["side"]}
+              />
             )
           }
           return null
         })}
       {newTexts &&
         newTexts.map((text, index) => {
-          if (newTexts.length - 1 === index) {
-            return (
-              <HeroElement
-                key={"n" + index}
-                text={text["text"]}
-                index={index}
-                classValue={classValue + text["side"]}
-              />
-            )
-          } else {
-            return (
-              <HeroElement
-                classValue={"bubble " + text["side"]}
-                key={"new" + index}
-                text={text["text"]}
-                index={index}
-              />
-            )
-          }
+          return (
+            <HeroElement
+              key={"n" + index}
+              text={text["text"]}
+              classValue={
+                text["side"] +
+                (newTexts.length - 1 === index ? classValue : " bubble ")
+              }
+            />
+          )
         })}
     </>
   )
