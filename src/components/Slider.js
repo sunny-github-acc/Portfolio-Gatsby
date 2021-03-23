@@ -2,22 +2,22 @@ import React from "react"
 import "keen-slider/keen-slider.min.css"
 import { useKeenSlider } from "keen-slider/react"
 
-export default function Slider({ projects }) {
+export default function Slider({ elements, options }) {
   const [currentSlide, setCurrentSlide] = React.useState(0)
   const [pause, setPause] = React.useState(false)
   const timer = React.useRef()
   const [sliderRef, slider] = useKeenSlider({
-    initial: 3,
+    initial: options.initial | 3,
     slideChanged(s) {
       setCurrentSlide(s.details().relativeSlide)
     },
-    spacing: 10,
-    slidesPerView: 1,
-    centered: true,
-    mode: "free-snap",
-    vertical: true,
-    loop: true,
-    duration: 500,
+    spacing: options.spacing | 10,
+    slidesPerView: options.slidesPerView | 1,
+    centered: options.centered | true,
+    mode: options.mode | "free-snap",
+    vertical: options.vertical | true,
+    loop: options.loop | true,
+    duration: options.duration | 500,
     dragStart: () => {
       setPause(true)
     },
@@ -49,13 +49,13 @@ export default function Slider({ projects }) {
   return (
     <>
       <div style={{ height: "50px" }} ref={sliderRef} className="keen-slider">
-        {projects.map((project, index) => {
+        {elements.map((element, index) => {
           return (
             <div
               key={index}
               className={"keen-slider__slide number-slide1" + index}
             >
-              {project}
+              {element}
             </div>
           )
         })}

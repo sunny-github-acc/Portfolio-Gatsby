@@ -5,6 +5,16 @@ import useFetch from "./useFetch"
 
 const Projects = () => {
   const { error, isPending, data } = useFetch("data/projects.json")
+  const options = {
+    initial: 3,
+    spacing: 10,
+    slidesPerView: 1,
+    centered: true,
+    mode: "free-snap",
+    vertical: true,
+    loop: true,
+    duration: 500,
+  }
 
   let projectArray
 
@@ -21,7 +31,9 @@ const Projects = () => {
       {isPending && (
         <div className="pending">We are looking for 'em projects..</div>
       )}
-      {projectArray && <Slider projects={projectArray} />}
+      {projectArray && (
+        <Slider options={{ ...options }} elements={projectArray} />
+      )}
     </section>
   )
 }

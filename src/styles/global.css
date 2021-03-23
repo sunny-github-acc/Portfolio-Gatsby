@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=DotGothic16&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap");
-.nav, .nav .links, .hero, .small-talk,
+.nav, .nav .links, .hero, .hero .hero-elements, .hero-elements,
 .contact, .contact .form {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -79,7 +79,10 @@ body {
 }
 
 .hero {
+  position: absolute;
+  bottom: 50px;
   max-height: 80vh;
+  min-width: 100vw;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -87,20 +90,19 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  -ms-flex-direction: column-reverse;
-      flex-direction: column-reverse;
 }
 
-.hero .small-talk {
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  min-height: 100vh;
+.hero .hero-elements {
+  max-height: 50vh;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  overflow-y: scroll;
   padding: 20px;
-  margin-bottom: 50px;
+  max-width: 80vw;
 }
 
-.hero .small-talk .bubble {
+.hero .hero-elements .bubble {
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
   max-height: 100vh;
@@ -108,7 +110,7 @@ body {
   font-size: 1.17em;
 }
 
-.hero .small-talk .hide {
+.hero .hero-elements .hide {
   max-height: 0;
   max-width: 0;
   font-size: 0;
@@ -121,18 +123,17 @@ body {
   margin: 0;
 }
 
-.hero .small-talk .hide::after, .hero .small-talk .hide::before {
+.hero .hero-elements .hide::after, .hero .hero-elements .hide::before {
   width: 0;
   height: 0;
 }
 
-.small-talk,
+.hero-elements,
 .contact {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  border: 1px solid black;
 }
 
 .contact .form {
@@ -146,6 +147,7 @@ body {
   position: absolute;
   bottom: 0;
   width: 100%;
+  height: 50px;
   text-align: center;
 }
 

@@ -1,6 +1,12 @@
-import React from "react"
+import React, { useEffect, useRef } from "react"
 
 const HeroInput = ({ handleSubmit, handleInput, visitorsInput }) => {
+  const inputRef = useRef(null)
+
+  useEffect(() => {
+    inputRef.current.focus()
+  }, [inputRef])
+
   return (
     <form onSubmit={handleSubmit}>
       <label>
@@ -9,7 +15,7 @@ const HeroInput = ({ handleSubmit, handleInput, visitorsInput }) => {
           type="text"
           value={visitorsInput}
           onChange={handleInput}
-          autoFocus
+          ref={inputRef}
         />
       </label>
       <input type="submit" name="Submit" />

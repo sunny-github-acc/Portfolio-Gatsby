@@ -107,20 +107,17 @@ const Hero = () => {
   }
 
   if (!displayedTexts.length) handleSubmit()
-
   return (
-    <section className="hero ">
-      <div className="small-talk">
-        <HeroElements
-          texts={displayedTexts}
-          setSubmitDisabled={setSubmitDisabled}
-        />
-        <HeroInput
-          visitorsInput={visitorsInput}
-          handleSubmit={handleSubmit}
-          handleInput={handleInput}
-        />
-      </div>
+    <section className="hero">
+      <HeroElements
+        texts={displayedTexts}
+        setSubmitDisabled={setSubmitDisabled}
+      />
+      <HeroInput
+        visitorsInput={visitorsInput}
+        handleSubmit={handleSubmit}
+        handleInput={handleInput}
+      />
     </section>
   )
 }

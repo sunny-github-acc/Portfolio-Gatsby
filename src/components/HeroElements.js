@@ -35,10 +35,10 @@ const HeroElements = ({ texts, setSubmitDisabled }) => {
       setOldTexts([...oldT])
     }
     handleTexts()
-  }, [texts])
+  }, [texts, setSubmitDisabled])
 
   return (
-    <>
+    <div className="hero-elements">
       {oldTexts &&
         oldTexts.map((text, index) => {
           if (text.length > 1) {
@@ -75,7 +75,7 @@ const HeroElements = ({ texts, setSubmitDisabled }) => {
             />
           )
         })}
-    </>
+    </div>
   )
 }
 export default HeroElements
