@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import HeroElement from "./HeroElement"
 
-const HeroElements = ({ texts, handleSubmitDisabled }) => {
+const HeroElements = ({ texts, setSubmitDisabled }) => {
   const [newTexts, setNewTexts] = useState([])
   const [oldTexts, setOldTexts] = useState()
   const [classValue, setClassValue] = useState(" bubble hide ")
@@ -12,19 +12,19 @@ const HeroElements = ({ texts, handleSubmitDisabled }) => {
       let newT = []
       let oldT = []
 
-      handleSubmitDisabled(true)
       texts.map((text, index) => {
         if (texts.length - 1 === index) {
           for (let i = 0; i < text.length; i++) {
             setNewTexts([])
             setTimeout(() => {
-              setClassValue("bubble ")
-            }, 1000 * i + 250)
-            setTimeout(() => {
               setClassValue("bubble hide ")
               newT.push(text[i])
               setNewTexts([...newT])
             }, 1000 * i)
+            setTimeout(() => {
+              if (text.length - 1 === i) setSubmitDisabled(false)
+              setClassValue("bubble ")
+            }, 1000 * i + 250)
           }
         } else {
           text.map(t => oldT.push(t))

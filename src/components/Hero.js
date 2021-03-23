@@ -86,16 +86,18 @@ const Hero = () => {
 
   const handleSubmit = e => {
     if (e) e.preventDefault()
-    if (!visitorsInput) return setVisitorsInput("")
+    if (!visitorsInput) return
+    if (submitDisabled) return
+
     if (displayedTexts.length !== scriptedTexts.length) {
       if (displayedTexts.length) setVisitorsQuestions(prev => prev.slice(1))
       setDisplayedTexts([...scriptedTexts.slice(0, displayedTexts.length + 1)])
     }
+
     setVisitorsInput("")
+    setSubmitDisabled(true)
   }
-  const handleSubmitDisabled = isTrue => {
-    setSubmitDisabled(isTrue)
-  }
+
   const handleInput = e => {
     setVisitorsInput(e.target.value)
     setVisitorsAnswers({
@@ -105,17 +107,13 @@ const Hero = () => {
   }
 
   if (!displayedTexts.length) handleSubmit()
-  console.log(
-    "🚀 ~ file: Hero.js ~ line 106 ~ Hero ~ handleSubmit",
-    submitDisabled
-  )
 
   return (
     <section className="hero ">
       <div className="small-talk">
         <HeroElements
           texts={displayedTexts}
-          handleSubmitDisabled={handleSubmitDisabled}
+          setSubmitDisabled={setSubmitDisabled}
         />
         <HeroInput
           visitorsInput={visitorsInput}
