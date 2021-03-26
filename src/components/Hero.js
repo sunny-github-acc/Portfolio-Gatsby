@@ -87,6 +87,7 @@ const Hero = () => {
   const handleSubmit = e => {
     if (e) e.preventDefault()
     if (!visitorsInput) return
+    if (!visitorsQuestions.length) return
     if (submitDisabled) return
 
     if (displayedTexts.length !== scriptedTexts.length) {
@@ -109,10 +110,13 @@ const Hero = () => {
   if (!displayedTexts.length) handleSubmit()
   return (
     <section className="hero">
-      <HeroElements
-        texts={displayedTexts}
-        setSubmitDisabled={setSubmitDisabled}
-      />
+      <div className="hero-container">
+        <HeroElements
+          texts={displayedTexts}
+          submitDisabled={submitDisabled}
+          setSubmitDisabled={setSubmitDisabled}
+        />
+      </div>
       <HeroInput
         visitorsInput={visitorsInput}
         handleSubmit={handleSubmit}

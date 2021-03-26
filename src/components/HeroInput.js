@@ -3,12 +3,21 @@ import React, { useEffect, useRef } from "react"
 const HeroInput = ({ handleSubmit, handleInput, visitorsInput }) => {
   const inputRef = useRef(null)
 
-  useEffect(() => {
+  const thisHandleSubmit = e => {
+    handleSubmit(e)
+    focus()
+  }
+
+  const focus = () => {
     inputRef.current.focus()
-  }, [inputRef])
+  }
+
+  useEffect(() => {
+    focus()
+  }, [])
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={thisHandleSubmit}>
       <label>
         Name:
         <input

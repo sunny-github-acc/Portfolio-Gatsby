@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=DotGothic16&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap");
-.nav, .nav .links, .hero, .hero .hero-elements, .hero-elements,
-.contact, .contact .form {
+.nav, .nav .links, .main .hero, .main .hero .hero-elements, .contact, .contact .form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -33,22 +32,21 @@ body {
   width: 100%;
   min-height: 100%;
   font-family: "DotGothic16", Georgia, serif;
-  background: -webkit-gradient(linear, left top, left bottom, from(#f8dd71), color-stop(#f8dd71), color-stop(#ff8f1f), to(#ff2978d8));
-  background: linear-gradient(to bottom, #f8dd71, #f8dd71, #ff8f1f, #ff2978d8);
+  background: -webkit-gradient(linear, left top, left bottom, from(#9976ec), color-stop(#9785fd), color-stop(#a371db), to(#fd85db));
+  background: linear-gradient(to bottom, #9976ec, #9785fd, #a371db, #fd85db);
 }
 
 .nav {
   padding: 25px;
   padding: 5px;
-  background: -webkit-gradient(linear, left top, left bottom, from(#d066ff), to(#b000ff));
-  background: linear-gradient(to bottom, #d066ff, #b000ff);
-  -webkit-box-shadow: 0px 5px 5px 2px #b000ff;
-          box-shadow: 0px 5px 5px 2px #b000ff;
+  background: -webkit-gradient(linear, left top, left bottom, from(#d093ec), to(#aa3cdd));
+  background: linear-gradient(to bottom, #d093ec, #aa3cdd);
+  -webkit-box-shadow: 0px 5px 5px 2px #aa3cdd;
+          box-shadow: 0px 5px 5px 2px #aa3cdd;
 }
 
 .nav .btn-container {
   margin: 20px 25px 15px 15px;
-  /* and that, will result in a 10px gap */
 }
 
 .nav .links {
@@ -74,35 +72,58 @@ body {
   height: 100%;
 }
 
+.glide__slides {
+  margin-top: 5px;
+}
+
 .main {
   height: calc(100vh - 150px);
 }
 
-.hero {
+.main .hero {
   position: absolute;
-  bottom: 50px;
-  max-height: 80vh;
+  bottom: 20px;
+  height: 100%;
   min-width: 100vw;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
-.hero .hero-elements {
-  max-height: 50vh;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
+.main .hero .hero-container {
   overflow-y: scroll;
-  padding: 20px;
-  max-width: 80vw;
+  -ms-scroll-snap-type: y proximity;
+      scroll-snap-type: y proximity;
 }
 
-.hero .hero-elements .bubble {
+.main .hero .hero-container::-webkit-scrollbar {
+  width: 0px;
+}
+
+.main .hero .hero-elements {
+  scroll-snap-align: end;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+  padding: 20px;
+  padding-top: 40px;
+  max-width: 80vw;
+  min-width: 50vw;
+}
+
+.main .hero .hero-elements .bubble {
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
   max-height: 100vh;
@@ -110,25 +131,28 @@ body {
   font-size: 1.17em;
 }
 
-.hero .hero-elements .hide {
+.main .hero .hero-elements .hide {
   max-height: 0;
   max-width: 0;
   font-size: 0;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  -webkit-box-shadow: 0px 0px 0px 0px #b000ff;
-          box-shadow: 0px 0px 0px 0px #b000ff;
+  -webkit-box-shadow: 0px 0px 0px 0px #aa3cdd;
+          box-shadow: 0px 0px 0px 0px #aa3cdd;
   background: transparent;
   padding: 0;
   margin: 0;
 }
 
-.hero .hero-elements .hide::after, .hero .hero-elements .hide::before {
+.main .hero .hero-elements .hide::after, .main .hero .hero-elements .hide::before {
   width: 0;
   height: 0;
 }
 
-.hero-elements,
+.main .hero .hero-elements .start {
+  scroll-snap-align: start;
+}
+
 .contact {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -141,6 +165,10 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+.glide__arrows {
+  position: absolute;
 }
 
 .footer {
@@ -166,11 +194,11 @@ body {
   -ms-flex-item-align: start;
       align-self: flex-start;
   font-weight: 700;
-  background-color: #b000ff;
+  background-color: #aa3cdd;
   color: #f8dd71;
   padding: 5px;
-  -webkit-box-shadow: 0 -3px #b000ff, 0 -6px #c700b5, 3px 0 #b000ff, 3px -3px #c700b5, 6px 0 #c700b5, 0 3px #b000ff, 0 6px #c700b5, -3px 0 #b000ff, -3px 3px #c700b5, -6px 0 #c700b5, -3px -3px #c700b5, 3px 3px #c700b5, 3px 9px #ff8f1f, 6px 6px #ff8f1f, 9px 3px #ff8f1f;
-          box-shadow: 0 -3px #b000ff, 0 -6px #c700b5, 3px 0 #b000ff, 3px -3px #c700b5, 6px 0 #c700b5, 0 3px #b000ff, 0 6px #c700b5, -3px 0 #b000ff, -3px 3px #c700b5, -6px 0 #c700b5, -3px -3px #c700b5, 3px 3px #c700b5, 3px 9px #ff8f1f, 6px 6px #ff8f1f, 9px 3px #ff8f1f;
+  -webkit-box-shadow: 0 -3px #aa3cdd, 0 -6px #ee6c9c, 3px 0 #aa3cdd, 3px -3px #ee6c9c, 6px 0 #ee6c9c, 0 3px #aa3cdd, 0 6px #ee6c9c, -3px 0 #aa3cdd, -3px 3px #ee6c9c, -6px 0 #ee6c9c, -3px -3px #ee6c9c, 3px 3px #ee6c9c, 3px 9px #f5ad65, 6px 6px #f5ad65, 9px 3px #f5ad65;
+          box-shadow: 0 -3px #aa3cdd, 0 -6px #ee6c9c, 3px 0 #aa3cdd, 3px -3px #ee6c9c, 6px 0 #ee6c9c, 0 3px #aa3cdd, 0 6px #ee6c9c, -3px 0 #aa3cdd, -3px 3px #ee6c9c, -6px 0 #ee6c9c, -3px -3px #ee6c9c, 3px 3px #ee6c9c, 3px 9px #f5ad65, 6px 6px #f5ad65, 9px 3px #f5ad65;
   -webkit-transition: all 0.1s ease;
   transition: all 0.1s ease;
   -webkit-box-sizing: border-box;
@@ -191,22 +219,22 @@ body {
 }
 
 .bubble::after {
-  background: #b000ff;
+  background: #aa3cdd;
   width: 9px;
   height: 3px;
   bottom: -14px;
   margin-left: 6px;
-  -webkit-box-shadow: -3px 0 #c700b5, 3px 0 #c700b5, 3px 3px #b000ff, 0px 3px #c700b5, 6px 3px #c700b5, 9px 3px #ff8f1f, 3px 6px #c700b5, 6px 6px #c700b5, 9px 6px #ff8f1f, 6px 9px #ff8f1f;
-          box-shadow: -3px 0 #c700b5, 3px 0 #c700b5, 3px 3px #b000ff, 0px 3px #c700b5, 6px 3px #c700b5, 9px 3px #ff8f1f, 3px 6px #c700b5, 6px 6px #c700b5, 9px 6px #ff8f1f, 6px 9px #ff8f1f;
+  -webkit-box-shadow: -3px 0 #ee6c9c, 3px 0 #ee6c9c, 3px 3px #aa3cdd, 0px 3px #ee6c9c, 6px 3px #ee6c9c, 9px 3px #f5ad65, 3px 6px #ee6c9c, 6px 6px #ee6c9c, 9px 6px #f5ad65, 6px 9px #f5ad65;
+          box-shadow: -3px 0 #ee6c9c, 3px 0 #ee6c9c, 3px 3px #aa3cdd, 0px 3px #ee6c9c, 6px 3px #ee6c9c, 9px 3px #f5ad65, 3px 6px #ee6c9c, 6px 6px #ee6c9c, 9px 6px #f5ad65, 6px 9px #f5ad65;
 }
 
 .bubble::before {
   width: 15px;
   height: 8px;
-  background: #b000ff;
+  background: #aa3cdd;
   bottom: -11px;
-  border-left: 3px solid #c700b5;
-  border-right: 3px solid #c700b5;
+  border-left: 3px solid #ee6c9c;
+  border-right: 3px solid #ee6c9c;
 }
 
 .bubble.-right {
@@ -223,15 +251,15 @@ body {
 .bubble.-right::after {
   margin-left: 0;
   margin-right: 6px;
-  -webkit-box-shadow: 3px 0 #c700b5, -3px 0 #c700b5, -3px 3px #b000ff, 0px 3px #c700b5, -6px 3px #c700b5, -3px 6px #c700b5, -6px 6px #c700b5, -3px 9px #ff8f1f, 0 6px #ff8f1f, 3px 3px #ff8f1f, 6px 0px #ff8f1f;
-          box-shadow: 3px 0 #c700b5, -3px 0 #c700b5, -3px 3px #b000ff, 0px 3px #c700b5, -6px 3px #c700b5, -3px 6px #c700b5, -6px 6px #c700b5, -3px 9px #ff8f1f, 0 6px #ff8f1f, 3px 3px #ff8f1f, 6px 0px #ff8f1f;
+  -webkit-box-shadow: 3px 0 #ee6c9c, -3px 0 #ee6c9c, -3px 3px #aa3cdd, 0px 3px #ee6c9c, -6px 3px #ee6c9c, -3px 6px #ee6c9c, -6px 6px #ee6c9c, -3px 9px #f5ad65, 0 6px #f5ad65, 3px 3px #f5ad65, 6px 0px #f5ad65;
+          box-shadow: 3px 0 #ee6c9c, -3px 0 #ee6c9c, -3px 3px #aa3cdd, 0px 3px #ee6c9c, -6px 3px #ee6c9c, -3px 6px #ee6c9c, -6px 6px #ee6c9c, -3px 9px #f5ad65, 0 6px #f5ad65, 3px 3px #f5ad65, 6px 0px #f5ad65;
 }
 
 .btn-container {
   padding: 0;
   background: #f8dd71;
-  -webkit-box-shadow: 0 -6px 0 -2px #f8dd71, 0 6px 0 -2px #f8dd71, 0 -12px 0 -4px #f8dd71, 0 12px 0 -4px #f8dd71, 0 -18px 0 -8px #f8dd71, 0 18px 0 -8px #f8dd71, 0 -24px 0 -12px #f8dd71, 0 24px 0 -12px #f8dd71, -2px 0 0 0 #c700b5, 2px 0 0 0 #c700b5, 0 -4px 0 0 #c700b5, 0 4px 0 0 #c700b5, 0 -10px 0 -2px #c700b5, 0 10px 0 -2px #c700b5, 0 -14px 0 -4px #c700b5, 0 14px 0 -4px #c700b5, 0 -20px 0 -8px #c700b5, 0 20px 0 -8px #c700b5, 0 -26px 0 -12px #c700b5, 0 26px 0 -12px #c700b5, -4px 0 0 0 #ff2976, 4px 0 0 0 #ff2976, 0 -2px 0 2px #ff2976, 0 2px 0 2px #ff2976, 0 -8px 0 0px #ff2976, 0 8px 0 0px #ff2976, 0 -12px 0 -2px #ff2976, 0 12px 0 -2px #ff2976, 0 -16px 0 -4px #ff2976, 0 16px 0 -4px #ff2976, 0 -22px 0 -8px #ff2976, 0 22px 0 -8px #ff2976, 0 -28px 0 -12px #ff2976, 0 28px 0 -12px #ff2976, -6px 0 0 0 #ff8f1f, 6px 0 0 0 #ff8f1f, 0 0 0 4px #ff8f1f, 0 -6px 0 2px #ff8f1f, 0 6px 0 2px #ff8f1f, 0 -10px 0 0 #ff8f1f, 0 10px 0 0 #ff8f1f, 0 -14px 0 -2px #ff8f1f, 0 14px 0 -2px #ff8f1f, 0 -18px 0 -4px #ff8f1f, 0 18px 0 -4px #ff8f1f, 0 -24px 0 -8px #ff8f1f, 0 24px 0 -8px #ff8f1f, 0 -30px 0 -12px #ff8f1f, 0 30px 0 -12px #ff8f1f;
-          box-shadow: 0 -6px 0 -2px #f8dd71, 0 6px 0 -2px #f8dd71, 0 -12px 0 -4px #f8dd71, 0 12px 0 -4px #f8dd71, 0 -18px 0 -8px #f8dd71, 0 18px 0 -8px #f8dd71, 0 -24px 0 -12px #f8dd71, 0 24px 0 -12px #f8dd71, -2px 0 0 0 #c700b5, 2px 0 0 0 #c700b5, 0 -4px 0 0 #c700b5, 0 4px 0 0 #c700b5, 0 -10px 0 -2px #c700b5, 0 10px 0 -2px #c700b5, 0 -14px 0 -4px #c700b5, 0 14px 0 -4px #c700b5, 0 -20px 0 -8px #c700b5, 0 20px 0 -8px #c700b5, 0 -26px 0 -12px #c700b5, 0 26px 0 -12px #c700b5, -4px 0 0 0 #ff2976, 4px 0 0 0 #ff2976, 0 -2px 0 2px #ff2976, 0 2px 0 2px #ff2976, 0 -8px 0 0px #ff2976, 0 8px 0 0px #ff2976, 0 -12px 0 -2px #ff2976, 0 12px 0 -2px #ff2976, 0 -16px 0 -4px #ff2976, 0 16px 0 -4px #ff2976, 0 -22px 0 -8px #ff2976, 0 22px 0 -8px #ff2976, 0 -28px 0 -12px #ff2976, 0 28px 0 -12px #ff2976, -6px 0 0 0 #ff8f1f, 6px 0 0 0 #ff8f1f, 0 0 0 4px #ff8f1f, 0 -6px 0 2px #ff8f1f, 0 6px 0 2px #ff8f1f, 0 -10px 0 0 #ff8f1f, 0 10px 0 0 #ff8f1f, 0 -14px 0 -2px #ff8f1f, 0 14px 0 -2px #ff8f1f, 0 -18px 0 -4px #ff8f1f, 0 18px 0 -4px #ff8f1f, 0 -24px 0 -8px #ff8f1f, 0 24px 0 -8px #ff8f1f, 0 -30px 0 -12px #ff8f1f, 0 30px 0 -12px #ff8f1f;
+  -webkit-box-shadow: 0 -6px 0 -2px #f8dd71, 0 6px 0 -2px #f8dd71, 0 -12px 0 -4px #f8dd71, 0 12px 0 -4px #f8dd71, 0 -18px 0 -8px #f8dd71, 0 18px 0 -8px #f8dd71, 0 -24px 0 -12px #f8dd71, 0 24px 0 -12px #f8dd71, -2px 0 0 0 #c776ec, 2px 0 0 0 #c776ec, 0 -4px 0 0 #c776ec, 0 4px 0 0 #c776ec, 0 -10px 0 -2px #c776ec, 0 10px 0 -2px #c776ec, 0 -14px 0 -4px #c776ec, 0 14px 0 -4px #c776ec, 0 -20px 0 -8px #c776ec, 0 20px 0 -8px #c776ec, 0 -26px 0 -12px #c776ec, 0 26px 0 -12px #c776ec, -4px 0 0 0 #ee6c9c, 4px 0 0 0 #ee6c9c, 0 -2px 0 2px #ee6c9c, 0 2px 0 2px #ee6c9c, 0 -8px 0 0px #ee6c9c, 0 8px 0 0px #ee6c9c, 0 -12px 0 -2px #ee6c9c, 0 12px 0 -2px #ee6c9c, 0 -16px 0 -4px #ee6c9c, 0 16px 0 -4px #ee6c9c, 0 -22px 0 -8px #ee6c9c, 0 22px 0 -8px #ee6c9c, 0 -28px 0 -12px #ee6c9c, 0 28px 0 -12px #ee6c9c, -6px 0 0 0 #f5ad65, 6px 0 0 0 #f5ad65, 0 0 0 4px #f5ad65, 0 -6px 0 2px #f5ad65, 0 6px 0 2px #f5ad65, 0 -10px 0 0 #f5ad65, 0 10px 0 0 #f5ad65, 0 -14px 0 -2px #f5ad65, 0 14px 0 -2px #f5ad65, 0 -18px 0 -4px #f5ad65, 0 18px 0 -4px #f5ad65, 0 -24px 0 -8px #f5ad65, 0 24px 0 -8px #f5ad65, 0 -30px 0 -12px #f5ad65, 0 30px 0 -12px #f5ad65;
+          box-shadow: 0 -6px 0 -2px #f8dd71, 0 6px 0 -2px #f8dd71, 0 -12px 0 -4px #f8dd71, 0 12px 0 -4px #f8dd71, 0 -18px 0 -8px #f8dd71, 0 18px 0 -8px #f8dd71, 0 -24px 0 -12px #f8dd71, 0 24px 0 -12px #f8dd71, -2px 0 0 0 #c776ec, 2px 0 0 0 #c776ec, 0 -4px 0 0 #c776ec, 0 4px 0 0 #c776ec, 0 -10px 0 -2px #c776ec, 0 10px 0 -2px #c776ec, 0 -14px 0 -4px #c776ec, 0 14px 0 -4px #c776ec, 0 -20px 0 -8px #c776ec, 0 20px 0 -8px #c776ec, 0 -26px 0 -12px #c776ec, 0 26px 0 -12px #c776ec, -4px 0 0 0 #ee6c9c, 4px 0 0 0 #ee6c9c, 0 -2px 0 2px #ee6c9c, 0 2px 0 2px #ee6c9c, 0 -8px 0 0px #ee6c9c, 0 8px 0 0px #ee6c9c, 0 -12px 0 -2px #ee6c9c, 0 12px 0 -2px #ee6c9c, 0 -16px 0 -4px #ee6c9c, 0 16px 0 -4px #ee6c9c, 0 -22px 0 -8px #ee6c9c, 0 22px 0 -8px #ee6c9c, 0 -28px 0 -12px #ee6c9c, 0 28px 0 -12px #ee6c9c, -6px 0 0 0 #f5ad65, 6px 0 0 0 #f5ad65, 0 0 0 4px #f5ad65, 0 -6px 0 2px #f5ad65, 0 6px 0 2px #f5ad65, 0 -10px 0 0 #f5ad65, 0 10px 0 0 #f5ad65, 0 -14px 0 -2px #f5ad65, 0 14px 0 -2px #f5ad65, 0 -18px 0 -4px #f5ad65, 0 18px 0 -4px #f5ad65, 0 -24px 0 -8px #f5ad65, 0 24px 0 -8px #f5ad65, 0 -30px 0 -12px #f5ad65, 0 30px 0 -12px #f5ad65;
 }
 
 .btn-container .btn {
@@ -239,7 +267,7 @@ body {
   background: transparent;
   padding: 0 20px 0px 20px;
   font-size: 20px;
-  color: #c700b5;
+  color: #c776ec;
   font-weight: 800;
   cursor: pointer;
   outline: none;

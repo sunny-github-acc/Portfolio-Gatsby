@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react"
 import HeroElement from "./HeroElement"
 
-const HeroElements = ({ texts, setSubmitDisabled }) => {
+const HeroElements = ({ texts, submitDisabled, setSubmitDisabled }) => {
   const [newTexts, setNewTexts] = useState([])
   const [oldTexts, setOldTexts] = useState()
   const [classValue, setClassValue] = useState(" bubble hide ")
 
   useEffect(() => {
     const handleTexts = () => {
+      if (!submitDisabled) return
       if (!texts) return
       let newT = []
       let oldT = []
@@ -16,6 +17,7 @@ const HeroElements = ({ texts, setSubmitDisabled }) => {
         if (texts.length - 1 === index) {
           for (let i = 0; i < text.length; i++) {
             setNewTexts([])
+
             setTimeout(() => {
               setClassValue("bubble hide ")
               newT.push(text[i])
@@ -31,11 +33,10 @@ const HeroElements = ({ texts, setSubmitDisabled }) => {
         }
         return null
       })
-
       setOldTexts([...oldT])
     }
     handleTexts()
-  }, [texts, setSubmitDisabled])
+  }, [texts, submitDisabled, setSubmitDisabled])
 
   return (
     <div className="hero-elements">
