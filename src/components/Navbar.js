@@ -14,17 +14,17 @@ export default function Navbar() {
   return (
     <div>
       <nav className="nav">
-        <div className="btn-container">
+        <div className="btn-container pixelated">
           <button className="btn" onClick={handleBtnHome}>
             HOME
           </button>
         </div>
-        <div className="btn-container">
+        <div className="btn-container pixelated">
           <button className="btn" onClick={handleBtnProjects}>
             PROJECTS
           </button>
         </div>
-        <div className="btn-container">
+        <div className="btn-container pixelated">
           <button className="btn" onClick={handleBtnContact}>
             CONTACT
           </button>

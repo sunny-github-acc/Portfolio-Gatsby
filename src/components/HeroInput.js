@@ -6,8 +6,20 @@ const HeroInput = ({ handleSubmit, handleInput, visitorsInput }) => {
   const thisHandleSubmit = e => {
     handleSubmit(e)
     focus()
+    setTimeout(() => {
+      setHeight()
+    }, 200)
   }
 
+  const handleChange = e => {
+    handleInput(e)
+    setHeight()
+  }
+
+  const setHeight = () => {
+    inputRef.current.style.height = ""
+    inputRef.current.style.height = inputRef.current.scrollHeight + "px"
+  }
   const focus = () => {
     inputRef.current.focus()
   }
@@ -17,17 +29,19 @@ const HeroInput = ({ handleSubmit, handleInput, visitorsInput }) => {
   }, [])
 
   return (
-    <form onSubmit={thisHandleSubmit}>
+    <form onSubmit={thisHandleSubmit} className="pixelated form">
       <label>
-        Name:
-        <input
-          type="text"
+        <textarea
+          name="text"
           value={visitorsInput}
-          onChange={handleInput}
+          onChange={handleChange}
           ref={inputRef}
+          onKeyPress={e => (e.key === "Enter" ? thisHandleSubmit(e) : null)}
         />
       </label>
-      <input type="submit" name="Submit" />
+      <div className="submit-container">
+        <input className="submit" type="submit" name="Submit" value=">" />
+      </div>
     </form>
   )
 }
