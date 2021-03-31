@@ -7,24 +7,31 @@ export default function Slider({ elements, options }) {
   const [pause, setPause] = React.useState(false)
   const timer = React.useRef()
   const [sliderRef, slider] = useKeenSlider({
-    initial: options.initial | 3,
-    slideChanged(s) {
-      setCurrentSlide(s.details().relativeSlide)
-    },
-    spacing: options.spacing | 10,
-    slidesPerView: options.slidesPerView | 1,
-    centered: options.centered | true,
-    mode: options.mode | "free-snap",
-    vertical: options.vertical | true,
-    loop: options.loop | true,
-    duration: options.duration | 500,
-    dragStart: () => {
-      setPause(true)
-    },
-    dragEnd: () => {
-      setPause(false)
-    },
+    spacing: 10,
+    slidesPerView: 1,
+    centered: true,
+    vertical: true,
+    loop: true,
   })
+
+  // initial: options.initial | 3,
+  // slideChanged(s) {
+  //   setCurrentSlide(s.details().relativeSlide)
+  // },
+  // duration: 500,
+  // spacing: options.spacing | 10,
+  // slidesPerView: options.slidesPerView | 1,
+  // centered: options.centered | true,
+  // mode: options.mode | "",
+  // vertical: options.vertical | "",
+  // loop: options.loop | true,
+  // duration: options.duration | "",
+  // dragStart: () => {
+  //   setPause(true)
+  // },
+  // dragEnd: () => {
+  //   setPause(false)
+  // },
 
   React.useEffect(() => {
     sliderRef.current.addEventListener("mouseover", () => {
@@ -35,20 +42,20 @@ export default function Slider({ elements, options }) {
     })
   }, [sliderRef])
 
-  React.useEffect(() => {
-    timer.current = setInterval(() => {
-      if (!pause && slider) {
-        slider.next()
-      }
-    }, 2000)
-    return () => {
-      clearInterval(timer.current)
-    }
-  }, [pause, slider])
+  // React.useEffect(() => {
+  //   timer.current = setInterval(() => {
+  //     if (!pause && slider) {
+  //       slider.next()
+  //     }
+  //   }, 2000)
+  //   return () => {
+  //     clearInterval(timer.current)
+  //   }
+  // }, [pause, slider])
 
   return (
     <>
-      <div style={{ height: "50px" }} ref={sliderRef} className="keen-slider">
+      <div ref={sliderRef} className="keen-slider">
         {elements.map((element, index) => {
           return (
             <div
@@ -72,7 +79,9 @@ export default function Slider({ elements, options }) {
                   slider.moveToSlideRelative(idx)
                 }}
                 className={"dot" + (currentSlide === idx ? " active" : "")}
-              ></button>
+              >
+                <i className="far fa-circle"></i>
+              </button>
             )
           })}
         </div>

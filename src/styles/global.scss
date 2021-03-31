@@ -8,6 +8,21 @@
   align-items: center;
   justify-content: center;
 }
+%main {
+  @extend %flex;
+  position: absolute;
+  bottom: #{$footerHeight};
+  height: 100%;
+  width: 100vw;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+%btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+}
 
 html {
   box-sizing: border-box;
@@ -68,13 +83,7 @@ body {
 .main {
   height: calc(100vh - #{$footerHeight} - 80px);
   .hero {
-    position: absolute;
-    bottom: #{$footerHeight};
-    height: 100%;
-    min-width: 100vw;
-    @extend %flex;
-    flex-direction: column;
-    justify-content: flex-end;
+    @extend %main;
     .hero-container {
       overflow-y: scroll;
       scroll-snap-type: y proximity;
@@ -172,6 +181,28 @@ body {
       }
     }
   }
+  .projects {
+    @extend %flex;
+    flex-direction: column;
+    .keen-slider {
+      height: 300px;
+      overflow: hidden;
+      width: 80vw;
+    }
+    // @extend %main;
+    .project {
+      height: 300px;
+      border: 1px solid black;
+      // width: 100vw;
+      // height: 100vh;
+    }
+    .dots {
+      text-align: center;
+      .dot {
+        @extend %btn;
+      }
+    }
+  }
 }
 .contact {
   @extend %flex;
@@ -205,6 +236,14 @@ body {
   width: 100%;
   height: $footerHeight;
   text-align: center;
+  color: $comicBackground;
+  .icons {
+    .icon {
+      padding-right: 5px;
+      padding-left: 5px;
+      cursor: pointer;
+    }
+  }
 }
 .glide__bullets {
   display: none;
@@ -307,14 +346,11 @@ body {
     0 -18px 0 -4px $pixelatedShadow, 0 18px 0 -4px $pixelatedShadow, 0 -24px 0 -8px $pixelatedShadow,
     0 24px 0 -8px $pixelatedShadow, 0 -30px 0 -12px $pixelatedShadow, 0 30px 0 -12px $pixelatedShadow;
   .btn {
-    border: none;
-    background: transparent;
+    @extend %btn;
     padding: 0 20px 0px 20px;
     font-size: #{$font-size-big};
     color: $pixelatedColor;
     font-weight: 800;
-    cursor: pointer;
-    outline: none;
     &:focus,
     &:hover {
       color: $pixelatedColorFocus;

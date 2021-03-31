@@ -1,10 +1,8 @@
 import React from "react"
-import GithubLogo from "../../static/images/github.png"
-import Link from "../../static/images/link.png"
 
 const Project = ({ project }) => {
   return (
-    <section className="projects">
+    <section className="project">
       <div className="visuals">
         <div className="image-container">
           <img
@@ -15,8 +13,8 @@ const Project = ({ project }) => {
           />
         </div>
         <div className="links">
-          <img style={{ height: "50px" }} src={GithubLogo} alt="GithubLogo" />
-          <img style={{ height: "50px" }} src={Link} alt="github logo" />
+          <i className="icon fab fa-github"></i>
+          <i className="fas fa-link"></i>
         </div>
       </div>
       <div className="text">
