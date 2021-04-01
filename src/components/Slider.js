@@ -7,11 +7,13 @@ export default function Slider({ elements, options }) {
   const [pause, setPause] = React.useState(false)
   const timer = React.useRef()
   const [sliderRef, slider] = useKeenSlider({
-    spacing: 10,
     slidesPerView: 1,
     centered: true,
     vertical: true,
     loop: true,
+    slideChanged(s) {
+      setCurrentSlide(s.details().relativeSlide)
+    },
   })
 
   // initial: options.initial | 3,
@@ -60,7 +62,7 @@ export default function Slider({ elements, options }) {
           return (
             <div
               key={index}
-              className={"keen-slider__slide number-slide1" + index}
+              className={"keen-slider__slide number-slide1 " + index}
             >
               {element}
             </div>

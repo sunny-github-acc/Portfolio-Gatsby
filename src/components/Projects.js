@@ -13,12 +13,13 @@ const Projects = () => {
   }
 
   return (
-    <section className="projects">
-      {error && <div className="error">Oops.. Something went wrong..</div>}
+    <section className="projects pixelated">
+      <h1 className="h1">Some of my projects:</h1>
+      {projectArray && <Slider elements={projectArray} />}
       {isPending && (
         <div className="pending">We are looking for 'em projects..</div>
       )}
-      {projectArray && <Slider elements={projectArray} />}
+      {error && <div className="error">Oops.. Something went wrong..</div>}
     </section>
   )
 }
