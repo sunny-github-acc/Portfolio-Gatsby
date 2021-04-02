@@ -30,15 +30,14 @@ const HeroInput = ({ handleSubmit, handleInput, visitorsInput }) => {
 
   return (
     <form onSubmit={thisHandleSubmit} className="pixelated form">
-      <label>
-        <textarea
-          name="text"
-          value={visitorsInput}
-          onChange={handleChange}
-          ref={inputRef}
-          onKeyPress={e => (e.key === "Enter" ? thisHandleSubmit(e) : null)}
-        />
-      </label>
+      <textarea
+        className="text"
+        name="text"
+        value={visitorsInput}
+        onChange={handleChange}
+        ref={inputRef}
+        onKeyPress={e => (e.key === "Enter" ? thisHandleSubmit(e) : null)}
+      />
       <div className="submit-container">
         <input className="submit" type="submit" name="Submit" value=">" />
       </div>

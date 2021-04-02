@@ -1,5 +1,6 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useRef } from "react"
 import Glide from "@glidejs/glide"
+import Navbar from "./Navbar"
 
 const sliderConfiguration = {
   perView: 1,
@@ -10,9 +11,19 @@ const sliderConfiguration = {
 let btnHome, btnProjects, btnContact
 
 function Carousel({ components }) {
-  btnHome = React.useRef(null)
-  btnProjects = React.useRef(null)
-  btnContact = React.useRef(null)
+  btnHome = useRef(null)
+  btnProjects = useRef(null)
+  btnContact = useRef(null)
+
+  //  const home =  <button ref={btnHome} className="glide__bullet" data-glide-dir="=0">
+  //   1
+  // </button>
+  // const projects = <button ref={btnProjects} className="glide__bullet" data-glide-dir="=1">
+  //   2
+  // </button>
+  // const contact = <button ref={btnContact} className="glide__bullet" data-glide-dir="=2">
+  //   2
+  // </button>
 
   useEffect(() => {
     const slider = new Glide(".glide", sliderConfiguration)
@@ -38,15 +49,27 @@ function Carousel({ components }) {
           &gt;
         </button>
       </div>
-      <div className="glide__bullets" data-glide-el="controls[nav]">
-        <button ref={btnHome} className="glide__bullet" data-glide-dir="=0">
-          1
+      <div className="glide__bullets nav" data-glide-el="controls[nav]">
+        <button
+          ref={btnContact}
+          className="glide__bullet pixelated btn"
+          data-glide-dir="=0"
+        >
+          MENU
         </button>
-        <button ref={btnProjects} className="glide__bullet" data-glide-dir="=1">
-          2
+        <button
+          ref={btnContact}
+          className="glide__bullet pixelated btn"
+          data-glide-dir="=1"
+        >
+          PROJECTS
         </button>
-        <button ref={btnContact} className="glide__bullet" data-glide-dir="=2">
-          2
+        <button
+          ref={btnContact}
+          className="glide__bullet pixelated btn"
+          data-glide-dir="=2"
+        >
+          CONTACT
         </button>
       </div>
     </div>

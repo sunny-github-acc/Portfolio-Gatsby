@@ -4,8 +4,8 @@ import { useKeenSlider } from "keen-slider/react"
 
 export default function Slider({ elements, options }) {
   const [currentSlide, setCurrentSlide] = React.useState(0)
-  const [pause, setPause] = React.useState(false)
-  const timer = React.useRef()
+  // const [pause, setPause] = React.useState(false)
+  // const timer = React.useRef()
   const [sliderRef, slider] = useKeenSlider({
     slidesPerView: 1,
     centered: true,
@@ -35,14 +35,14 @@ export default function Slider({ elements, options }) {
   //   setPause(false)
   // },
 
-  React.useEffect(() => {
-    sliderRef.current.addEventListener("mouseover", () => {
-      setPause(true)
-    })
-    sliderRef.current.addEventListener("mouseout", () => {
-      setPause(false)
-    })
-  }, [sliderRef])
+  // React.useEffect(() => {
+  //   sliderRef.current.addEventListener("mouseover", () => {
+  //     setPause(true)
+  //   })
+  //   sliderRef.current.addEventListener("mouseout", () => {
+  //     setPause(false)
+  //   })
+  // }, [sliderRef])
 
   // React.useEffect(() => {
   //   timer.current = setInterval(() => {

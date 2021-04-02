@@ -19,7 +19,6 @@
 }
 %btn {
   border: none;
-  background: transparent;
   cursor: pointer;
   outline: none;
 }
@@ -27,7 +26,6 @@
 html {
   box-sizing: border-box;
   width: 100vw;
-  min-width: 300px;
   height: 100vh;
 }
 *,
@@ -47,15 +45,63 @@ body {
 .nav {
   @extend %flex;
   flex-direction: row;
-  height: 80px;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: #{$navHeight};
   padding: 5px;
   background: linear-gradient(to bottom, lighten($comicBackground, 20%), $comicBackground);
   box-shadow: 0px 5px 5px 2px $comicBackground;
   border-bottom: 1px solid $comicBackground;
-  .btn-container {
-    margin: 20px 25px 15px 15px;
-    @media screen and (max-width: $tablet) {
+  .btn {
+    @extend %btn;
+    color: $pixelatedBorder;
+    font-weight: 1000;
+    font-size: 1.3em;
+    margin: 20px;
+    &.glide__bullet--active {
+      color: $pixelatedOuterBorder;
+    }
+  }
+  .buttons,
+  .menu-container {
+    justify-content: center;
+  }
+  .buttons {
+    .btn-container.outer {
+      margin: 0;
+      .btn-container {
+        margin-right: 20px;
+        margin-left: 20px;
+      }
+    }
+  }
+  .menu-container {
+    display: none;
+    .menu {
+      position: absolute;
+      top: #{$navHeight};
+      height: calc(100vh - #{$navHeight});
+      width: 100vw;
+      background: linear-gradient(to bottom, lighten($comicBackground, 20%), $comicBackground);
+      z-index: 999;
+      &.hide {
+        display: none;
+      }
+      .btn-container {
+        margin: 20vw;
+        .btn {
+          width: 100%;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: $tablet) {
+    .buttons {
       display: none;
+    }
+    .menu-container {
+      display: flex;
     }
   }
   .links {
@@ -81,8 +127,15 @@ body {
 .glide__slides {
   margin-top: 5px;
 }
+.carousel-slides {
+  width: 100vw !important;
+}
 .main {
   height: calc(100vh - #{$footerHeight} - 80px);
+  opacity: 1;
+  &.hide {
+    opacity: 0;
+  }
   .hero {
     @extend %main;
     .hero-container {
@@ -94,21 +147,20 @@ body {
         width: 0px;
       }
       .hero-elements {
-        scroll-snap-align: end;
         @extend %flex;
         align-items: center;
         justify-content: center;
         position: relative;
-        padding: 20px;
         padding-top: 40px;
-        max-width: 600px;
+        padding-bottom: 20px;
+        scroll-snap-align: end;
+        max-width: 70vw;
         @media screen and (max-width: $tablet) {
-          max-width: 70vw;
         }
         .bubble {
+          text-align: left;
           transition: all 0.2s;
           max-height: 100vh;
-          // max-width: 400px;
           font-size: #{$font-size-big};
           @media screen and (max-width: $tablet) {
             // max-width: 50vw;
@@ -116,6 +168,7 @@ body {
         }
         .-right {
           background-color: $pixelatedColor;
+          text-align: right;
         }
         .hide {
           max-height: 0;
@@ -139,9 +192,19 @@ body {
     }
     .form {
       @extend %flex;
+      flex-direction: row;
+      justify-content: space-around;
       padding-right: 15px;
       padding-left: 15px;
-      textarea {
+      max-width: 80vw;
+      min-width: 40vw;
+      @media screen and (max-width: $mobile) {
+        padding-right: 5px;
+        padding-left: 5px;
+      }
+      .text {
+        max-width: 65vw;
+        min-width: 30vw;
         margin-right: 10px;
         padding: 5px;
         outline: none;
@@ -184,7 +247,7 @@ body {
   .projects {
     @extend %flex;
     position: absolute;
-    top: calc(25vh - 100px);
+    top: calc(25vh - 50px);
     text-align: center;
     width: 80vw;
     max-width: 500px;
@@ -192,12 +255,14 @@ body {
     padding-right: 20px;
     padding-left: 20px;
     margin-left: calc(50vw - 250px);
+    overflow: hidden;
     @media screen and (max-width: 620px) {
       margin-left: calc(10vw);
     }
     .h1 {
+      font-size: 1.4em;
       position: relative;
-      padding-top: 10px;
+      padding: 10px;
       max-width: 500px;
       margin: 0;
       color: $pixelatedColor;
@@ -230,7 +295,7 @@ body {
         }
         .image,
         .filter {
-          height: calc(50vh - 100px);
+          height: calc(50vh - 20px);
           z-index: 1;
         }
         .filter {
@@ -256,7 +321,12 @@ body {
       .links {
         padding-top: 0;
       }
+      .title {
+        font-size: 1.5em;
+      }
       .links {
+        position: relative;
+        top: -1px;
         .icon {
           padding-left: 8px;
           cursor: pointer;
@@ -282,6 +352,20 @@ body {
           padding: 10px;
         }
       }
+      @media screen and (max-width: $mobile) {
+        & {
+          padding: 0;
+        }
+        .content {
+          background: #c776ecb6 !important;
+          // margin-right: 35px !important;
+          // max-width: 145px;
+          // padding: 0 !important;
+        }
+        .filter {
+          opacity: 0.4 !important;
+        }
+      }
       @media screen and (max-width: $tablet) {
         .image-container {
           align-self: center;
@@ -301,6 +385,7 @@ body {
     .dots {
       text-align: center;
       .dot {
+        background: transparent;
         @extend %btn;
         color: $comicBorder;
         &.active {
@@ -314,6 +399,7 @@ body {
   @extend %flex;
   max-width: 80vw;
   min-width: 80vw;
+  overflow: hidden;
   .form {
     @extend %flex;
   }
@@ -352,7 +438,6 @@ body {
   }
 }
 .glide__bullets {
-  display: none;
 }
 
 .bubble {
@@ -457,8 +542,7 @@ body {
     font-size: #{$font-size-big};
     color: $pixelatedColor;
     font-weight: 800;
-    &:focus,
-    &:hover {
+    &.active {
       color: $pixelatedColorFocus;
     }
   }
