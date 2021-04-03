@@ -25,6 +25,13 @@ function Carousel({ components }) {
   //   2
   // </button>
 
+  const navButtons = useRef(null)
+  const menuBtn = useRef(null)
+  const handleNavButtons = () => {
+    navButtons.current.classList.toggle("hide")
+    menuBtn.current.classList.toggle("selected")
+  }
+
   useEffect(() => {
     const slider = new Glide(".glide", sliderConfiguration)
     slider.mount()
@@ -41,6 +48,7 @@ function Carousel({ components }) {
           ))}
         </ul>
       </div>
+
       <div className="glide__arrows" data-glide-el="controls">
         <button className="glide__arrow glide__arrow--left" data-glide-dir="<">
           &lt;
@@ -49,27 +57,44 @@ function Carousel({ components }) {
           &gt;
         </button>
       </div>
-      <div className="glide__bullets nav" data-glide-el="controls[nav]">
+
+      <div
+        ref={navButtons}
+        className="glide__bullets nav desktop hide"
+        data-glide-el="controls[nav]"
+      >
         <button
           ref={btnContact}
           className="glide__bullet pixelated btn"
           data-glide-dir="=0"
+          onClick={handleNavButtons}
         >
-          MENU
+          <span className="text">HOME</span>
         </button>
         <button
           ref={btnContact}
           className="glide__bullet pixelated btn"
           data-glide-dir="=1"
+          onClick={handleNavButtons}
         >
-          PROJECTS
+          <span className="text">PROJECTS</span>
         </button>
         <button
           ref={btnContact}
           className="glide__bullet pixelated btn"
           data-glide-dir="=2"
+          onClick={handleNavButtons}
         >
-          CONTACT
+          <span className="text">CONTACT</span>
+        </button>
+      </div>
+      <div className="nav mobile">
+        <button
+          ref={menuBtn}
+          className="btn pixelated"
+          onClick={handleNavButtons}
+        >
+          <span className="text">MENU</span>
         </button>
       </div>
     </div>
