@@ -26,17 +26,10 @@
           justify-content: flex-end;
 }
 
-.nav .btn, .main .carousel-slides .projects .dots .dot, .pixelated .btn {
+.nav .btn, .main .hero .hero-container .hero-elements .bubble .btn, .main .carousel-slides .projects .dots .dot, .pixelated .btn {
   border: none;
   cursor: pointer;
   outline: none;
-}
-
-html {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  width: 100vw;
-  height: 100vh;
 }
 
 *,
@@ -47,11 +40,19 @@ html {
   text-decoration: none;
 }
 
+html {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+}
+
 body {
   height: 100vh;
   margin: 0;
   width: 100%;
   min-height: 100%;
+  min-height: 200px;
   font-family: "DotGothic16", Georgia, serif;
   background: -webkit-gradient(linear, left top, left bottom, from(#9976ec), color-stop(#9785fd), color-stop(#a371db), to(#fd85db));
   background: linear-gradient(to bottom, #9976ec, #9785fd, #a371db, #fd85db);
@@ -72,6 +73,7 @@ body {
   -webkit-box-shadow: 0px 5px 5px 2px #aa3cdd;
           box-shadow: 0px 5px 5px 2px #aa3cdd;
   border-bottom: 1px solid #aa3cdd;
+  z-index: 999;
 }
 
 .nav.mobile {
@@ -186,7 +188,15 @@ body {
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
   max-height: 100vh;
-  font-size: 20px;
+  font-size: 1.1em;
+}
+
+.main .hero .hero-container .hero-elements .bubble .btn {
+  background: #ee6c9c;
+  font-family: "DotGothic16", Georgia, serif;
+  font-size: 1em;
+  font-weight: 1000;
+  color: #f8dd71;
 }
 
 .main .hero .hero-container .hero-elements .-right {
@@ -248,7 +258,7 @@ body {
   height: 40px;
   max-height: 80px;
   color: #c776ec;
-  font-size: 20px;
+  font-size: 1.1em;
   font-family: "DotGothic16", Georgia, serif;
   font-weight: 700;
 }
@@ -278,7 +288,7 @@ body {
   border: none;
   color: #c776ec;
   background-color: transparent;
-  font-size: calc(20px + 10px);
+  font-size: calc(1.1em + 10px);
   font-weight: 800;
   padding: 0;
   padding-bottom: 2px;
@@ -293,9 +303,8 @@ body {
 .main .carousel-slides .projects {
   text-align: center;
   width: 80vw;
-  max-height: calc(100vh - 50px);
   max-width: 500px;
-  min-height: 300px;
+  max-height: calc(100vh - 170px) !important;
   overflow: hidden;
 }
 
@@ -435,9 +444,6 @@ body {
   .main .carousel-slides .projects .project .info {
     padding: 0px;
     width: 100%;
-  }
-  .main .carousel-slides .projects .project .info .content {
-    background-color: transparent;
   }
 }
 
@@ -590,7 +596,7 @@ body {
 
 .pixelated .btn {
   padding: 0 20px 0px 20px;
-  font-size: 20px;
+  font-size: 1.1em;
   color: #c776ec;
   font-weight: 800;
 }

@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from "react"
 import Glide from "@glidejs/glide"
-import Navbar from "./Navbar"
 
 const sliderConfiguration = {
   perView: 1,

@@ -23,22 +23,23 @@
   outline: none;
 }
 
-html {
-  box-sizing: border-box;
-  width: 100vw;
-  height: 100vh;
-}
 *,
 *:before,
 *:after {
   box-sizing: inherit;
   text-decoration: none;
 }
+html {
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+}
 body {
   height: 100vh;
   margin: 0;
   width: 100%;
   min-height: 100%;
+  min-height: 200px;
   font-family: "DotGothic16", Georgia, serif;
   background: $gradient;
 }
@@ -53,6 +54,7 @@ body {
   background: linear-gradient(to bottom, lighten($comicBackground, 20%), $comicBackground);
   box-shadow: 0px 5px 5px 2px $comicBackground;
   border-bottom: 1px solid $comicBackground;
+  z-index: 999;
   &.mobile {
     display: none;
   }
@@ -139,13 +141,20 @@ body {
         padding-bottom: 20px;
         scroll-snap-align: end;
         max-width: 70vw;
-        @media screen and (max-width: $tablet) {
-        }
         .bubble {
           text-align: left;
           transition: all 0.2s;
           max-height: 100vh;
           font-size: #{$font-size-big};
+          .btn {
+            @extend %btn;
+            background: $pixelatedOuterBorder;
+            font-family: "DotGothic16", Georgia, serif;
+            font-size: #{$font-size-big - 0.1};
+            font-weight: 1000;
+            color: $pixelatedBackground;
+          }
+
           @media screen and (max-width: $tablet) {
             // max-width: 50vw;
           }
@@ -235,9 +244,9 @@ body {
       @extend %flex;
       text-align: center;
       width: 80vw;
-      max-height: calc(100vh - 50px);
       max-width: 500px;
-      min-height: 300px;
+      // min-height: 300px;
+      max-height: calc(100vh - 170px) !important;
       overflow: hidden;
       @media screen and (max-width: 620px) {
       }
@@ -358,9 +367,6 @@ body {
           .info {
             padding: 0px;
             width: 100%;
-            .content {
-              background-color: transparent;
-            }
           }
         }
       }
