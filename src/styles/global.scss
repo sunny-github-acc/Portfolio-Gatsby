@@ -141,6 +141,7 @@ body {
         padding-bottom: 20px;
         scroll-snap-align: end;
         max-width: 70vw;
+        max-height: calc(100vh - #{$navHeight});
         .bubble {
           text-align: left;
           transition: all 0.2s;
@@ -245,9 +246,7 @@ body {
       text-align: center;
       width: 80vw;
       max-width: 500px;
-      // min-height: 300px;
       max-height: calc(100vh - 170px) !important;
-      overflow: hidden;
       @media screen and (max-width: 620px) {
       }
       .h1 {
@@ -257,6 +256,7 @@ body {
         max-width: 500px;
         margin: 0;
         color: $pixelatedColor;
+        color: $comicBackground;
       }
       .keen-slider {
         width: 70vw;
@@ -272,6 +272,9 @@ body {
         max-width: 500px;
         padding-right: 40px;
         padding-left: 40px;
+        @media screen and (max-width: $tablet) {
+          padding: 0;
+        }
         .image-container {
           position: absolute;
           align-self: flex-start;
@@ -301,12 +304,17 @@ body {
         .title,
         .tech,
         .links {
+          // @extend %flex;
+          // flex-wrap: wrap;
+          // flex-direction: row;
+          max-width: 100%;
           margin: 0;
           text-align: right;
           z-index: 11;
           color: $pixelatedColor;
           background: $pixelatedBackground;
           padding: 10px;
+          white-space: normal;
         }
         .tech,
         .links {
@@ -314,6 +322,9 @@ body {
         }
         .title {
           font-size: 1.5em;
+        }
+        .tech {
+          color: $pixelatedOuterBorder;
         }
         .links {
           position: relative;
@@ -387,8 +398,38 @@ body {
 .contact {
   @extend %flex;
   max-width: 80vw;
-  min-width: 80vw;
-  overflow: hidden;
+  max-height: calc(100vh - #{$navHeight});
+  padding: 20px;
+  padding-top: 0;
+  .input-container {
+    @extend %flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    .h1 {
+      padding-right: 10px;
+      color: $comicBackground;
+    }
+    .input,
+    .textarea,
+    .submit {
+      background: transparent;
+      outline: none;
+      border: none;
+      border-bottom: 1px solid $pixelatedOuterBorder;
+      color: $comicBorder;
+      &::placeholder {
+        color: $pixelatedColor;
+      }
+    }
+    .submit {
+      cursor: pointer;
+      font-weight: 1000;
+      border-bottom: 3px solid $pixelatedOuterBorder;
+      margin: 10px;
+    }
+  }
+  @media screen and (max-width: $tablet) {
+  }
   .form {
     @extend %flex;
   }

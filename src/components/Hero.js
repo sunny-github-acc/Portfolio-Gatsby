@@ -2,25 +2,15 @@ import React, { useState } from "react"
 import { btnContact, btnProjects } from "./Carousel"
 import HeroElements from "./HeroElements"
 import HeroInput from "./HeroInput"
-// import { handleBtnContact, handleBtnProjects } from "./Navbar"
 
-const Hero = () => {
-  const [visitorsInput, setVisitorsInput] = useState([])
-  const [visitorsAnswers, setVisitorsAnswers] = useState({
-    name: "",
-    okay: "",
-    subject: "",
-    message: "",
-    email: "",
-  })
-  const [visitorsQuestions, setVisitorsQuestions] = useState([
-    "name",
-    "okay",
-    "subject",
-    "message",
-    "email",
-  ])
+const Hero = ({
+  visitorsQuestions,
+  visitorsAnswers,
+  handleVisitorsQuestions,
+  handleVisitorsAnswers,
+}) => {
   const [displayedTexts, setDisplayedTexts] = useState([])
+  const [visitorsInput, setVisitorsInput] = useState([])
   const [submitDisabled, setSubmitDisabled] = useState(false)
 
   const handleGoToContact = () => {
@@ -37,8 +27,7 @@ const Hero = () => {
       {
         text: (
           <span>
-            My name is <span className="strong">Karolis Kaz</span> and I'm
-            aspiring software developer.
+            My name is Karolis Kaz and I'm an aspiring software developer.
           </span>
         ),
         side: " -right ",
@@ -47,7 +36,7 @@ const Hero = () => {
     ],
     [
       {
-        text: <span>{visitorsAnswers["name"]}</span>,
+        text: <span>{visitorsAnswers.name}</span>,
         side: " ",
       },
       {
@@ -66,9 +55,9 @@ const Hero = () => {
       {
         text: (
           <span>
-            You might check{" "}
+            You might{" "}
             <button className="btn" onClick={handleGoToProjects}>
-              my projects here.
+              check my projects here.
             </button>
           </span>
         ),
@@ -77,7 +66,6 @@ const Hero = () => {
       {
         text: (
           <span>
-            {" "}
             Alternatively, we can have a little chat for a while. What do you
             say?
           </span>
@@ -97,13 +85,16 @@ const Hero = () => {
       {
         text: (
           <span>
-            I enjoy{" "}
+            I enjoy
             <strong>
               {" "}
               developing software putting the most emphasis in building
               websites.
             </strong>
-            My cup of tea are html, css, js, react and git.
+            My cup of tea are{" "}
+            <span className="btn" style={{ cursor: "unset" }}>
+              html, css, js, react and git.
+            </span>
           </span>
         ),
         side: " -right ",
@@ -149,7 +140,13 @@ const Hero = () => {
         side: " ",
       },
       {
-        text: <span>Awesome. Let's stay in touch. What's your email?</span>,
+        text: <span>Awesome. It was nice talking to you. </span>,
+        side: " -right ",
+      },
+      {
+        text: (
+          <span>Would you like to give me your email to stay in touch?</span>
+        ),
         side: " -right ",
       },
     ],
@@ -163,9 +160,8 @@ const Hero = () => {
           <span>
             Great. I stored your details on{" "}
             <button className="btn" onClick={handleGoToContact}>
-              CONTACT section
+              CONTACT section.
             </button>
-            , so that I could contact you later on.
           </span>
         ),
         side: " -right ",
@@ -173,15 +169,15 @@ const Hero = () => {
       {
         text: (
           <span>
-            {" "}
             Just to be safe, go there and check if all the info you entered are
-            correct. You can do that by answering this message.
+            correct. You can do that by answering this message. See ya!
           </span>
         ),
         side: " -right ",
       },
     ],
   ]
+
   const handleSubmit = e => {
     if (e) e.preventDefault()
     if (!visitorsQuestions.length) return handleGoToContact()
@@ -189,7 +185,7 @@ const Hero = () => {
     if (submitDisabled) return
 
     if (displayedTexts.length !== scriptedTexts.length) {
-      if (displayedTexts.length) setVisitorsQuestions(prev => prev.slice(1))
+      if (displayedTexts.length) handleVisitorsQuestions()
       setDisplayedTexts([...scriptedTexts.slice(0, displayedTexts.length + 1)])
     }
 
@@ -199,13 +195,11 @@ const Hero = () => {
 
   const handleInput = e => {
     setVisitorsInput(e.target.value)
-    setVisitorsAnswers({
-      ...visitorsAnswers,
-      [visitorsQuestions[0]]: e.target.value,
-    })
+    handleVisitorsAnswers(e.target.value)
   }
 
   if (!displayedTexts.length) handleSubmit()
+
   return (
     <section className="hero">
       <div className="hero-container">

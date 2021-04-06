@@ -1,46 +1,62 @@
 import React from "react"
 
-const Contact = () => {
+const Contact = ({ visitorsAnswers, handleName, handleEmail }) => {
   return (
     <section className="hero">
-      <form className="contact">
-        <h1 className="bubble -right">How may I call you?</h1>
-        <label className="name bubble">
-          <input
-            type="text"
-            name="name"
-            placeholder="I'm known as.."
-            required
-          />
-        </label>
-        <h1 className="bubble -right">How may I find you?</h1>
-        <label className="email bubble">
-          <input
-            type="text"
-            name="email"
-            placeholder="My email address is.."
-            required
-          />
-        </label>
-        <h1 className="bubble -right">What are your interests?</h1>
-        <label className="subject bubble">
-          <input
-            type="text"
-            name="subject"
-            placeholder="I have some work for you.."
-            required
-          />
-        </label>
-        <h1 className="bubble -right">Can you tell me more about it?</h1>
-        <label className="message bubble">
-          <input
-            type="textarea"
-            name="message"
-            placeholder="Now listen carefully.."
-            required
-          />
-        </label>
-        <input className="submit" type="submit" value="Send" />
+      <form className="contact pixelated">
+        <div className="input-container">
+          <h1 className="h1">Your name:</h1>
+          <label className="label name">
+            <input
+              className="input"
+              type="text"
+              name="name"
+              placeholder={visitorsAnswers.name}
+              onChange={handleName}
+              required
+            />
+          </label>
+        </div>
+        <div className="input-container">
+          <h1 className="h1">Your email:</h1>
+          <label className="label email">
+            <input
+              className="input"
+              type="text"
+              name="email"
+              placeholder={visitorsAnswers.email}
+              onChange={handleEmail}
+              required
+            />
+          </label>
+        </div>
+        <div className="input-container">
+          <h1 className="h1">Field of interests:</h1>
+          <label className="label subject">
+            <input
+              className="input"
+              type="text"
+              name="subject"
+              placeholder={visitorsAnswers.subject}
+              required
+            />
+          </label>
+        </div>
+        <div className="input-container">
+          <h1 className="h1">Mission:</h1>
+          <label className="label message">
+            <textarea
+              className="textarea"
+              type="textarea"
+              name="message"
+              placeholder={visitorsAnswers.message}
+              required
+            />
+          </label>
+        </div>
+        <div className="input-container">
+          <input className="submit" type="submit" value="SAVE" />
+        </div>
       </form>
     </section>
   )

@@ -24,11 +24,11 @@ const HeroElements = ({ texts, submitDisabled, setSubmitDisabled }) => {
               setClassValue("bubble hide ")
               newT.push(text[i])
               setNewTexts([...newT])
-            }, 2000 * (j - 1))
+            }, 2000 * (j - 19))
             setTimeout(() => {
               if (text.length - 1 === i) setSubmitDisabled(false)
               setClassValue("bubble ")
-            }, 2000 * (j - 1) + 250)
+            }, 2000 * (j - 19) + 250)
           }
         } else {
           text.map(t => oldT.push(t))

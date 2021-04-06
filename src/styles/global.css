@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=DotGothic16&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap");
-.main .hero, .nav, .main .hero .hero-container .hero-elements, .main .hero .form, .main .carousel-slides, .main .carousel-slides .projects, .main .carousel-slides .projects .project, .main .carousel-slides .projects .project .info, .contact, .contact .form, .glide__arrows {
+.main .hero, .nav, .main .hero .hero-container .hero-elements, .main .hero .form, .main .carousel-slides, .main .carousel-slides .projects, .main .carousel-slides .projects .project, .main .carousel-slides .projects .project .info, .contact, .contact .input-container, .contact .form, .glide__arrows {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -181,6 +181,7 @@ body {
   padding-bottom: 20px;
   scroll-snap-align: end;
   max-width: 70vw;
+  max-height: calc(100vh - 60px);
 }
 
 .main .hero .hero-container .hero-elements .bubble {
@@ -305,7 +306,6 @@ body {
   width: 80vw;
   max-width: 500px;
   max-height: calc(100vh - 170px) !important;
-  overflow: hidden;
 }
 
 .main .carousel-slides .projects .h1 {
@@ -315,6 +315,7 @@ body {
   max-width: 500px;
   margin: 0;
   color: #c776ec;
+  color: #aa3cdd;
 }
 
 .main .carousel-slides .projects .keen-slider {
@@ -332,6 +333,12 @@ body {
   max-width: 500px;
   padding-right: 40px;
   padding-left: 40px;
+}
+
+@media screen and (max-width: 767px) {
+  .main .carousel-slides .projects .project {
+    padding: 0;
+  }
 }
 
 .main .carousel-slides .projects .project .image-container {
@@ -369,12 +376,14 @@ body {
 .main .carousel-slides .projects .project .title,
 .main .carousel-slides .projects .project .tech,
 .main .carousel-slides .projects .project .links {
+  max-width: 100%;
   margin: 0;
   text-align: right;
   z-index: 11;
   color: #c776ec;
   background: #f8dd71;
   padding: 10px;
+  white-space: normal;
 }
 
 .main .carousel-slides .projects .project .tech,
@@ -384,6 +393,10 @@ body {
 
 .main .carousel-slides .projects .project .title {
   font-size: 1.5em;
+}
+
+.main .carousel-slides .projects .project .tech {
+  color: #ee6c9c;
 }
 
 .main .carousel-slides .projects .project .links {
@@ -462,8 +475,64 @@ body {
 
 .contact {
   max-width: 80vw;
-  min-width: 80vw;
-  overflow: hidden;
+  max-height: calc(100vh - 60px);
+  padding: 20px;
+  padding-top: 0;
+}
+
+.contact .input-container {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.contact .input-container .h1 {
+  padding-right: 10px;
+  color: #aa3cdd;
+}
+
+.contact .input-container .input,
+.contact .input-container .textarea,
+.contact .input-container .submit {
+  background: transparent;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #ee6c9c;
+  color: #ee6c9c;
+}
+
+.contact .input-container .input::-webkit-input-placeholder,
+.contact .input-container .textarea::-webkit-input-placeholder,
+.contact .input-container .submit::-webkit-input-placeholder {
+  color: #c776ec;
+}
+
+.contact .input-container .input:-ms-input-placeholder,
+.contact .input-container .textarea:-ms-input-placeholder,
+.contact .input-container .submit:-ms-input-placeholder {
+  color: #c776ec;
+}
+
+.contact .input-container .input::-ms-input-placeholder,
+.contact .input-container .textarea::-ms-input-placeholder,
+.contact .input-container .submit::-ms-input-placeholder {
+  color: #c776ec;
+}
+
+.contact .input-container .input::placeholder,
+.contact .input-container .textarea::placeholder,
+.contact .input-container .submit::placeholder {
+  color: #c776ec;
+}
+
+.contact .input-container .submit {
+  cursor: pointer;
+  font-weight: 1000;
+  border-bottom: 3px solid #ee6c9c;
+  margin: 10px;
 }
 
 .glide__arrows {

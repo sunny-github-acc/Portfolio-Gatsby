@@ -7,7 +7,7 @@ export default function Layout({ children }) {
   const main = useRef(null)
 
   setTimeout(() => {
-    main.current.classList.remove("hide")
+    main.current?.classList.remove("hide")
   }, 300)
 
   return (
