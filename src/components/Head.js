@@ -7,41 +7,12 @@ import { useStaticQuery, graphql } from "gatsby"
 const Head = ({ title, description, image }) => {
   const { pathname } = useLocation()
 
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            defaultTitle: title
-            defaultDescription: description
-            siteUrl
-            defaultImage: image
-          }
-        }
-      }
-    `
-  )
-
-  const {
-    defaultTitle,
-    defaultDescription,
-    siteUrl,
-    defaultImage,
-  } = site.siteMetadata
-
-  const seo = {
-    title: title || defaultTitle,
-    description: description || defaultDescription,
-    image: `${image || defaultImage}`,
-    url: `${siteUrl}${pathname}`,
-  }
-
   return (
     <div>
       <Helmet
-        title={title}
-        defaultTitle={seo.title}
-        titleTemplate={`%s | ${defaultTitle}`}
+        title="Karolis Kaz"
+        defaultTitle="Karolis Kaz"
+        titleTemplate={`%s | Karolis Kaz`}
       >
         <html lang="en" />
         <script
@@ -49,8 +20,8 @@ const Head = ({ title, description, image }) => {
           crossorigin="anonymous"
         ></script>
 
-        <meta name="description" content={seo.description} />
-        <meta name="image" content={seo.image} />
+        <meta name="description" content="Karolis Kaz" />
+        <meta name="image" content="Karolis Kaz" />
       </Helmet>
     </div>
   )
