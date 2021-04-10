@@ -28,5 +28,5 @@ module.exports = {
   ],
 }
 module.exports = {
-  pathPrefix: "/Portfolio-Gatsby",
+  pathPrefix: "/portfolio",
 }
