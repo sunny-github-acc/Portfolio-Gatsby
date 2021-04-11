@@ -1,18 +1,13 @@
 import React from "react"
-import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
-import { useLocation } from "@reach/router"
-import { useStaticQuery, graphql } from "gatsby"
 
-const Head = ({ title, description, image }) => {
-  const { pathname } = useLocation()
-
+const Head = () => {
   return (
     <div>
       <Helmet
         title="Karolis Kaz"
         defaultTitle="Karolis Kaz"
-        titleTemplate={`%s | Karolis Kaz`}
+        titleTemplate="Karolis Kaz"
       >
         <html lang="en" />
         <script
@@ -20,6 +15,7 @@ const Head = ({ title, description, image }) => {
           crossorigin="anonymous"
         ></script>
 
+        <link rel="shortcut icon" type="image/x-icon" href="images/logo.png" />
         <meta name="description" content="Karolis Kaz" />
         <meta name="image" content="Karolis Kaz" />
       </Helmet>
@@ -28,15 +24,3 @@ const Head = ({ title, description, image }) => {
 }
 
 export default Head
-
-Head.propTypes = {
-  title: PropTypes.string,
-  description: PropTypes.string,
-  image: PropTypes.string,
-}
-
-Head.defaultProps = {
-  title: null,
-  description: null,
-  image: null,
-}
