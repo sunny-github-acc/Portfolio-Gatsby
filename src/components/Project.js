@@ -17,8 +17,12 @@ const Project = ({ project }) => {
       </div>
       <h4 className="tech">{project.tech}</h4>
       <div className="links">
-        <i className="icon fab fa-github"></i>
-        <i className="icon fas fa-link"></i>
+        <a href={project.github} target="_blank">
+          <i className="icon fab fa-github"></i>
+        </a>
+        <a href={project.live} target="_blank">
+          <i className="icon fas fa-link"></i>
+        </a>
       </div>
     </section>
   )

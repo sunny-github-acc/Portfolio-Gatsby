@@ -5,30 +5,30 @@
       "id": "1",
       "image": "images/spinta.png",
       "alt": "website image",
-      "content": "<i>Lorem ipsum dolor sit amet, bonorum qualisque ei mel,</i> <u>id velit qualisque cum, in mea dicant appareat lobortis.</u> ",
+      "content": "Spintos laboratorija was my first project. It was supposed to be a frontend side of a mock fashion magazine/shop.",
       "github": "https://github.com/sunny-github-acc/spintos-laboratorija",
-      "live": "www.github.com",
-      "tech": "html, css, javascript"
+      "live": "https://sunny-github-acc.github.io/spintos-laboratorija/",
+      "tech": "html, css, react"
     },
     {
       "title": "This portfolio",
       "id": "2",
-      "image": "spinta.png",
+      "image": "images/this.png",
       "alt": "website image",
-      "content": "<i>Lorem ipsum dolor sit amet, bonorum qualisque ei mel,</i> <u>id velit qualisque cum, in mea dicant appareat lobortis.</u> ",
-      "github": "https://github.com/sunny-github-acc/spintos-laboratorija",
-      "live": "www.github.com",
-      "tech": "html, css, javascript"
+      "content": "I made this portfolio to look cartoonish and interactive because I wanted to show my react skills and personality.",
+      "github": "https://github.com/sunny-github-acc/portfolio",
+      "live": "www.karoliskaz.com",
+      "tech": "html, css, react"
     },
     {
       "title": "Autocomplete input",
       "id": "3",
-      "image": "spinta.png",
+      "image": "images/wcc.png",
       "alt": "website image",
-      "content": "<i>Lorem ipsum dolor sit amet, bonorum qualisque ei mel,</i> <u>id velit qualisque cum, in mea dicant appareat lobortis.</u> ",
-      "github": "https://github.com/sunny-github-acc/spintos-laboratorija",
-      "live": "www.github.com",
-      "tech": "html, css, javascript"
+      "content": "This was a homework assignment for WCC Academy courses. It's purpose was to create autocompletion banner for a movie search.",
+      "github": "https://github.com/sunny-github-acc/wcc-autocomplete-tab",
+      "live": "https://vimeo.com/535825556",
+      "tech": "html, css, react, git"
     }
-  ]
+  ] 
 }

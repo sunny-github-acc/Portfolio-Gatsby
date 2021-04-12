@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=DotGothic16&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap");
-.main .hero, .nav, .main .hero .hero-container .hero-elements, .main .hero .form, .main .carousel-slides, .main .carousel-slides .projects, .main .carousel-slides .projects .project, .main .carousel-slides .projects .project .info, .contact, .contact .input-container, .contact .form, .glide__arrows {
+.nav, .main .hero, .main .hero .hero-container, .main .hero .hero-container .scroll-container .hero-elements, .main .hero .form, .main .hero .form-container, .main .carousel-slides, .main .carousel-slides .projects, .main .carousel-slides .projects .project, .main .carousel-slides .projects .project .info, .contact, .contact .input-container, .contact .form, .glide__arrows {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -16,17 +16,7 @@
           flex-direction: column;
 }
 
-.main .hero {
-  position: absolute;
-  bottom: 50px;
-  height: 100%;
-  width: 100vw;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-}
-
-.nav .btn, .main .hero .hero-container .hero-elements .bubble .btn, .main .carousel-slides .projects .dots .dot, .pixelated .btn {
+.nav .btn, .main .hero .hero-container .scroll-container .hero-elements .bubble .btn, .main .carousel-slides .projects .dots .dot, .pixelated .btn {
   border: none;
   cursor: pointer;
   outline: none;
@@ -38,6 +28,7 @@
   -webkit-box-sizing: inherit;
           box-sizing: inherit;
   text-decoration: none;
+  color: inherit;
 }
 
 html {
@@ -157,19 +148,52 @@ body {
   opacity: 0;
 }
 
+.main .hero {
+  position: absolute;
+  bottom: 50px;
+  height: 100%;
+  width: 100vw;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
 .main .hero .hero-container {
-  overflow-y: scroll;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  height: calc(100vh - 50px - 60px - 80px);
+  padding-bottom: 40px;
+}
+
+.main .hero .hero-container .scroll-container {
+  max-height: 100%;
+  margin: auto;
+  margin-bottom: 0;
   -ms-scroll-snap-type: y proximity;
       scroll-snap-type: y proximity;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  overflow-y: scroll;
+  padding-left: 1em;
+  padding-right: 2em;
 }
 
-.main .hero .hero-container::-webkit-scrollbar {
-  width: 0px;
+.main .hero .hero-container .scroll-container:hover {
+  padding-right: 1em;
 }
 
-.main .hero .hero-container .hero-elements {
+.main .hero .hero-container .scroll-container:hover::-webkit-scrollbar {
+  width: 1em;
+}
+
+.main .hero .hero-container .scroll-container::-webkit-scrollbar {
+  width: 0;
+}
+
+.main .hero .hero-container .scroll-container::-webkit-scrollbar-thumb {
+  background: #f8dd71;
+}
+
+.main .hero .hero-container .scroll-container .hero-elements {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -177,14 +201,12 @@ body {
       -ms-flex-pack: end;
           justify-content: flex-end;
   position: relative;
-  padding-top: 40px;
-  padding-bottom: 20px;
+  padding-top: 60px;
   scroll-snap-align: end;
-  max-width: 70vw;
-  max-height: calc(100vh - 60px);
+  width: 70vw;
 }
 
-.main .hero .hero-container .hero-elements .bubble {
+.main .hero .hero-container .scroll-container .hero-elements .bubble {
   text-align: left;
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
@@ -192,7 +214,7 @@ body {
   font-size: 1.1em;
 }
 
-.main .hero .hero-container .hero-elements .bubble .btn {
+.main .hero .hero-container .scroll-container .hero-elements .bubble .btn {
   background: #ee6c9c;
   font-family: "DotGothic16", Georgia, serif;
   font-size: 1em;
@@ -200,12 +222,12 @@ body {
   color: #f8dd71;
 }
 
-.main .hero .hero-container .hero-elements .-right {
+.main .hero .hero-container .scroll-container .hero-elements .-right {
   background-color: #c776ec;
   text-align: right;
 }
 
-.main .hero .hero-container .hero-elements .hide {
+.main .hero .hero-container .scroll-container .hero-elements .hide {
   max-height: 0;
   max-width: 0;
   font-size: 0;
@@ -218,12 +240,12 @@ body {
   margin: 0;
 }
 
-.main .hero .hero-container .hero-elements .hide::after, .main .hero .hero-container .hero-elements .hide::before {
+.main .hero .hero-container .scroll-container .hero-elements .hide::after, .main .hero .hero-container .scroll-container .hero-elements .hide::before {
   width: 0;
   height: 0;
 }
 
-.main .hero .hero-container .hero-elements .start {
+.main .hero .hero-container .scroll-container .hero-elements .start {
   scroll-snap-align: start;
 }
 
@@ -295,6 +317,44 @@ body {
   padding-bottom: 2px;
   padding-left: 2px;
   cursor: pointer;
+}
+
+.main .hero .form-container {
+  height: calc(100vh - 50px - 60px);
+  bottom: -50px;
+  position: absolute;
+}
+
+.main .hero .form-container .scroll-container {
+  max-height: 80%;
+  margin: auto !important;
+  overflow-y: auto;
+}
+
+.main .hero .form-container .h1 {
+  width: 150px;
+  text-align: right;
+}
+
+.main .hero .form-container .textarea,
+.main .hero .form-container .input {
+  font-size: 1.1em;
+  font-family: "DotGothic16", Georgia, serif;
+}
+
+.main .hero .form-container .textarea:hover::-webkit-scrollbar,
+.main .hero .form-container .input:hover::-webkit-scrollbar {
+  width: 1em;
+}
+
+.main .hero .form-container .textarea::-webkit-scrollbar,
+.main .hero .form-container .input::-webkit-scrollbar {
+  width: 0;
+}
+
+.main .hero .form-container .textarea::-webkit-scrollbar-thumb,
+.main .hero .form-container .input::-webkit-scrollbar-thumb {
+  background: #f8dd71;
 }
 
 .main .carousel-slides {
@@ -473,6 +533,13 @@ body {
   color: #aa3cdd;
 }
 
+.success {
+  padding: 10px;
+  font-size: 1.1em;
+  font-weight: 700;
+  color: #aa3cdd;
+}
+
 .contact {
   max-width: 80vw;
   max-height: calc(100vh - 60px);
@@ -574,6 +641,19 @@ body {
   cursor: pointer;
 }
 
+.footer .icons .icon:hover .hide, .footer .icons .icon:active .hide {
+  position: absolute;
+  color: #c776ec;
+  border: #ee6c9c;
+  display: inline-block;
+  top: -60px;
+  line-height: 20px;
+}
+
+.footer .icons .icon .hide {
+  display: none;
+}
+
 .bubble {
   max-width: 80%;
   white-space: normal;
@@ -584,7 +664,7 @@ body {
   text-align: right;
   -ms-flex-item-align: start;
       align-self: flex-start;
-  font-weight: 700;
+  font-weight: 100;
   background-color: #aa3cdd;
   color: #f8dd71;
   padding: 5px;
@@ -631,8 +711,8 @@ body {
 .bubble.-right {
   -ms-flex-item-align: end;
       align-self: flex-end;
-  -webkit-box-shadow: 0 -3px #f8dd71, 0 -6px #f8dd71, 3px 0 #f8dd71, 3px -3px #f8dd71, 6px 0 #f8dd71, 0 3px #f8dd71, 0 6px #f8dd71, -3px 0 #f8dd71, -3px 3px #f8dd71, -6px 0 #f8dd71, -3px -3px #f8dd71, 3px 3px #f8dd71, 3px 9px #f8dd71, 6px 6px #f8dd71, 9px 3px #f8dd71;
-          box-shadow: 0 -3px #f8dd71, 0 -6px #f8dd71, 3px 0 #f8dd71, 3px -3px #f8dd71, 6px 0 #f8dd71, 0 3px #f8dd71, 0 6px #f8dd71, -3px 0 #f8dd71, -3px 3px #f8dd71, -6px 0 #f8dd71, -3px -3px #f8dd71, 3px 3px #f8dd71, 3px 9px #f8dd71, 6px 6px #f8dd71, 9px 3px #f8dd71;
+  -webkit-box-shadow: 0 -3px #c776ec, 0 -6px #f8dd71, 3px 0 #c776ec, 3px -3px #f8dd71, 6px 0 #f8dd71, 0 3px #c776ec, 0 6px #f8dd71, -3px 0 #c776ec, -3px 3px #f8dd71, -6px 0 #f8dd71, -3px -3px #f8dd71, 3px 3px #f8dd71, 3px 9px #f5ad65, 6px 6px #f5ad65, 9px 3px #f5ad65;
+          box-shadow: 0 -3px #c776ec, 0 -6px #f8dd71, 3px 0 #c776ec, 3px -3px #f8dd71, 6px 0 #f8dd71, 0 3px #c776ec, 0 6px #f8dd71, -3px 0 #c776ec, -3px 3px #f8dd71, -6px 0 #f8dd71, -3px -3px #f8dd71, 3px 3px #f8dd71, 3px 9px #f5ad65, 6px 6px #f5ad65, 9px 3px #f5ad65;
 }
 
 .bubble.-right::after, .bubble.-right::before {
@@ -641,17 +721,17 @@ body {
 }
 
 .bubble.-right::after {
-  background: #f8dd71;
+  background: #c776ec;
   margin-left: 0;
   margin-right: 6px;
-  -webkit-box-shadow: 3px 0 #f8dd71, -3px 0 #f8dd71, -3px 3px #f8dd71, 0px 3px #f8dd71, -6px 3px #f8dd71, -3px 6px #f8dd71, -6px 6px #f8dd71, -3px 9px #f8dd71, 0 6px #f8dd71, 3px 3px #f8dd71, 6px 0px #f8dd71;
-          box-shadow: 3px 0 #f8dd71, -3px 0 #f8dd71, -3px 3px #f8dd71, 0px 3px #f8dd71, -6px 3px #f8dd71, -3px 6px #f8dd71, -6px 6px #f8dd71, -3px 9px #f8dd71, 0 6px #f8dd71, 3px 3px #f8dd71, 6px 0px #f8dd71;
+  -webkit-box-shadow: 3px 0 #f8dd71, -3px 0 #f8dd71, -3px 3px #c776ec, 0px 3px #f8dd71, -6px 3px #f8dd71, -3px 6px #f8dd71, -6px 6px #f8dd71, -3px 9px #f5ad65, 0 6px #f5ad65, 3px 3px #f5ad65, 6px 0px #f5ad65;
+          box-shadow: 3px 0 #f8dd71, -3px 0 #f8dd71, -3px 3px #c776ec, 0px 3px #f8dd71, -6px 3px #f8dd71, -3px 6px #f8dd71, -6px 6px #f8dd71, -3px 9px #f5ad65, 0 6px #f5ad65, 3px 3px #f5ad65, 6px 0px #f5ad65;
 }
 
 .bubble.-right::before {
   width: 15px;
   height: 8px;
-  background: #f8dd71;
+  background: #c776ec;
   bottom: -11px;
   border-left: 3px solid #f8dd71;
   border-right: 3px solid #f8dd71;

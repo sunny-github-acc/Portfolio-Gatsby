@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { btnContact, btnProjects } from "./Carousel"
+import { submit } from "./Contact"
 import HeroElements from "./HeroElements"
 import HeroInput from "./HeroInput"
 
@@ -17,13 +18,18 @@ const Hero = ({
     btnContact.current.click()
   }
 
+  const handleSaveForm = () => {
+    btnContact.current.click()
+    submit.current.click()
+  }
+
   const handleGoToProjects = () => {
     btnProjects.current.click()
   }
 
   const scriptedTexts = [
     [
-      { text: <span>Hello there! How are you doing?</span>, side: " -right " },
+      { text: <span>Hello there!</span>, side: " -right " },
       {
         text: (
           <span>
@@ -32,7 +38,7 @@ const Hero = ({
         ),
         side: " -right ",
       },
-      { text: <span>How may I call you?</span>, side: " -right " },
+      { text: <span>What's your name?</span>, side: " -right " },
     ],
     [
       {
@@ -55,21 +61,18 @@ const Hero = ({
       {
         text: (
           <span>
-            You might{" "}
+            You may check my{" "}
             <button className="btn" onClick={handleGoToProjects}>
-              check my projects here.
-            </button>
+              {" "}
+              projects{" "}
+            </button>{" "}
+            or we can have a little chat.
           </span>
         ),
         side: " -right ",
       },
       {
-        text: (
-          <span>
-            Alternatively, we can have a little chat for a while. What do you
-            say?
-          </span>
-        ),
+        text: <span> What do you say?</span>,
         side: " -right ",
       },
     ],
@@ -79,20 +82,24 @@ const Hero = ({
         side: " ",
       },
       {
-        text: <span>Nice! So, as I said, my name is Karolis.</span>,
+        text: <span>Nice! Let me tell you a bit about myself then.</span>,
         side: " -right ",
       },
       {
         text: (
           <span>
-            I enjoy
-            <strong>
-              {" "}
-              developing software putting the most emphasis in building
-              websites.
-            </strong>
+            I enjoy developing software putting the most emphasis in building
+            websites.
+          </span>
+        ),
+        side: " -right ",
+      },
+      {
+        text: (
+          <span>
             My cup of tea are{" "}
             <span className="btn" style={{ cursor: "unset" }}>
+              {" "}
               html, css, js, react and git.
             </span>
           </span>
@@ -100,7 +107,19 @@ const Hero = ({
         side: " -right ",
       },
       {
-        text: <span>How about you, what are your field of interests?</span>,
+        text: (
+          <span>
+            Besides recently I started learning{" "}
+            <span className="btn" style={{ cursor: "unset" }}>
+              {" "}
+              docker, sql, postgresql, nodejs and graphql.
+            </span>
+          </span>
+        ),
+        side: " -right ",
+      },
+      {
+        text: <span>Is that something you are also interested?</span>,
         side: " -right ",
       },
     ],
@@ -130,7 +149,7 @@ const Hero = ({
         side: " -right ",
       },
       {
-        text: <span>How about you? What brings you here?</span>,
+        text: <span>How about you? What's your story?</span>,
         side: " -right ",
       },
     ],
@@ -140,7 +159,9 @@ const Hero = ({
         side: " ",
       },
       {
-        text: <span>Awesome. It was nice talking to you. </span>,
+        text: (
+          <span>Thanks for your answer. I appreciate talking to you. </span>
+        ),
         side: " -right ",
       },
       {
@@ -160,8 +181,9 @@ const Hero = ({
           <span>
             Great. I stored your details on{" "}
             <button className="btn" onClick={handleGoToContact}>
-              CONTACT section.
-            </button>
+              CONTACT
+            </button>{" "}
+            section if you'd like to edit them.
           </span>
         ),
         side: " -right ",
@@ -169,8 +191,8 @@ const Hero = ({
       {
         text: (
           <span>
-            Just to be safe, go there and check if all the info you entered are
-            correct. You can do that by answering this message. See ya!
+            If not, just answer to this message to save our conversation. See
+            ya!
           </span>
         ),
         side: " -right ",
@@ -180,7 +202,7 @@ const Hero = ({
 
   const handleSubmit = e => {
     if (e) e.preventDefault()
-    if (!visitorsQuestions.length) return handleGoToContact()
+    if (!visitorsQuestions.length) return handleSaveForm()
     if (!visitorsInput) return
     if (submitDisabled) return
 
@@ -203,11 +225,13 @@ const Hero = ({
   return (
     <section className="hero">
       <div className="hero-container">
-        <HeroElements
-          texts={displayedTexts}
-          submitDisabled={submitDisabled}
-          setSubmitDisabled={setSubmitDisabled}
-        />
+        <div className="scroll-container">
+          <HeroElements
+            texts={displayedTexts}
+            submitDisabled={submitDisabled}
+            setSubmitDisabled={setSubmitDisabled}
+          />
+        </div>
       </div>
       <HeroInput
         visitorsInput={visitorsInput}

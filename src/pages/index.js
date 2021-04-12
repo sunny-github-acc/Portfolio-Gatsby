@@ -4,7 +4,7 @@ import "../styles/home.css"
 import "@glidejs/glide/dist/css/glide.core.min.css"
 import { Carousel } from "../components/Carousel"
 import Hero from "../components/Hero"
-import Contact from "../components/Contact"
+import { Contact } from "../components/Contact"
 import Projects from "../components/Projects"
 
 export default function Home() {
@@ -16,11 +16,11 @@ export default function Home() {
     "email",
   ])
   const [visitorsAnswers, setVisitorsAnswers] = useState({
-    name: "Luke Skywalker",
+    name: "",
     okay: "",
     subject: "",
     message: "",
-    email: "Computers, AI, Cybernetics.",
+    email: "",
   })
 
   const handleVisitorsAnswers = e => {

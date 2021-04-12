@@ -9,25 +9,17 @@
   justify-content: center;
   flex-direction: column;
 }
-%main {
-  @extend %flex;
-  position: absolute;
-  bottom: #{$footerHeight};
-  height: 100%;
-  width: 100vw;
-  justify-content: flex-end;
-}
 %btn {
   border: none;
   cursor: pointer;
   outline: none;
 }
-
 *,
 *:before,
 *:after {
   box-sizing: inherit;
   text-decoration: none;
+  color: inherit;
 }
 html {
   box-sizing: border-box;
@@ -123,67 +115,90 @@ body {
     opacity: 0;
   }
   .hero {
-    @extend %main;
+    @extend %flex;
+    position: absolute;
+    bottom: #{$footerHeight};
+    height: 100%;
+    width: 100vw;
+    justify-content: flex-end;
     .hero-container {
-      overflow-y: scroll;
-      scroll-snap-type: y proximity;
-      margin-top: 20px;
-      margin-bottom: 20px;
-      &::-webkit-scrollbar {
-        width: 0px;
-      }
-      .hero-elements {
-        @extend %flex;
-        align-items: center;
-        justify-content: flex-end;
-        position: relative;
-        padding-top: 40px;
-        padding-bottom: 20px;
-        scroll-snap-align: end;
-        max-width: 70vw;
-        max-height: calc(100vh - #{$navHeight});
-        .bubble {
-          text-align: left;
-          transition: all 0.2s;
-          max-height: 100vh;
-          font-size: #{$font-size-big};
-          .btn {
-            @extend %btn;
-            background: $pixelatedOuterBorder;
-            font-family: "DotGothic16", Georgia, serif;
-            font-size: #{$font-size-big - 0.1};
-            font-weight: 1000;
-            color: $pixelatedBackground;
-          }
+      @extend %flex;
+      justify-content: flex-end;
+      height: calc(100vh - #{$footerHeight} - #{$navHeight} - 80px);
+      padding-bottom: 40px;
+      .scroll-container {
+        max-height: 100%;
+        margin: auto;
+        margin-bottom: 0;
+        scroll-snap-type: y proximity;
+        overflow-y: scroll;
+        padding-left: 1em;
+        padding-right: 2em;
+        &:hover {
+          padding-right: 1em;
+        }
+        &:hover::-webkit-scrollbar {
+          width: 1em;
+        }
+        &::-webkit-scrollbar {
+          width: 0;
+        }
+        &::-webkit-scrollbar-thumb {
+          background: $comicBorderRight;
+        }
+        .hero-elements {
+          @extend %flex;
+          align-items: center;
+          justify-content: flex-end;
+          position: relative;
+          padding-top: 60px;
+          scroll-snap-align: end;
+          width: 70vw;
 
-          @media screen and (max-width: $tablet) {
-            // max-width: 50vw;
+          .bubble {
+            text-align: left;
+            transition: all 0.2s;
+            max-height: 100vh;
+            font-size: #{$font-size-big};
+            .btn {
+              @extend %btn;
+              background: $pixelatedOuterBorder;
+              font-family: "DotGothic16", Georgia, serif;
+              font-size: #{$font-size-big - 0.1};
+              font-weight: 1000;
+              color: $pixelatedBackground;
+            }
+
+            @media screen and (max-width: $tablet) {
+              // max-width: 50vw;
+            }
           }
-        }
-        .-right {
-          background-color: $pixelatedColor;
-          text-align: right;
-        }
-        .hide {
-          max-height: 0;
-          max-width: 0;
-          font-size: 0;
-          transition: all 0.3s;
-          box-shadow: 0px 0px 0px 0px $comicBackground;
-          background: transparent;
-          padding: 0;
-          margin: 0;
-          &::after,
-          &::before {
-            width: 0;
-            height: 0;
+          .-right {
+            background-color: $pixelatedColor;
+            text-align: right;
           }
-        }
-        .start {
-          scroll-snap-align: start;
+          .hide {
+            max-height: 0;
+            max-width: 0;
+            font-size: 0;
+            transition: all 0.3s;
+            box-shadow: 0px 0px 0px 0px $comicBackground;
+            background: transparent;
+            padding: 0;
+            margin: 0;
+            &::after,
+            &::before {
+              width: 0;
+              height: 0;
+            }
+          }
+          .start {
+            scroll-snap-align: start;
+          }
         }
       }
     }
+
     .form {
       @extend %flex;
       flex-direction: row;
@@ -237,6 +252,36 @@ body {
         }
       }
     }
+    .form-container {
+      @extend %flex;
+      height: calc(100vh - #{$footerHeight} - #{$navHeight});
+      bottom: -#{$footerHeight};
+      position: absolute;
+      .scroll-container {
+        max-height: 80%;
+        margin: auto !important;
+        overflow-y: auto;
+      }
+      .h1 {
+        width: 150px;
+        text-align: right;
+      }
+      .textarea,
+      .input {
+        font-size: $font-size-big;
+        font-family: "DotGothic16", Georgia, serif;
+
+        &:hover::-webkit-scrollbar {
+          width: 1em;
+        }
+        &::-webkit-scrollbar {
+          width: 0;
+        }
+        &::-webkit-scrollbar-thumb {
+          background: $comicBorderRight;
+        }
+      }
+    }
   }
   .carousel-slides {
     @extend %flex;
@@ -264,7 +309,6 @@ body {
         height: 50vh;
         overflow: hidden;
       }
-      // @extend %main;
       .project {
         @extend %flex;
         align-items: flex-end;
@@ -395,6 +439,12 @@ body {
     }
   }
 }
+.success {
+  padding: 10px;
+  font-size: $font-size-big;
+  font-weight: 700;
+  color: $comicBackground;
+}
 .contact {
   @extend %flex;
   max-width: 80vw;
@@ -464,6 +514,20 @@ body {
       padding-right: 5px;
       padding-left: 5px;
       cursor: pointer;
+      &:hover,
+      &:active {
+        .hide {
+          position: absolute;
+          color: $pixelatedColor;
+          border: $comicBorder;
+          display: inline-block;
+          top: -60px;
+          line-height: 20px;
+        }
+      }
+      .hide {
+        display: none;
+      }
     }
   }
 }
@@ -477,7 +541,7 @@ body {
   margin: 10px 9px 29px 6px;
   text-align: right;
   align-self: flex-start;
-  font-weight: 700;
+  font-weight: 100;
   background-color: $comicBackground;
   color: $comicColor;
   padding: 5px;

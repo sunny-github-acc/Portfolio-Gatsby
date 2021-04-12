@@ -26,9 +26,13 @@ function Carousel({ components }) {
 
   const navButtons = useRef(null)
   const menuBtn = useRef(null)
-  const handleNavButtons = () => {
-    navButtons.current.classList.toggle("hide")
-    menuBtn.current.classList.toggle("selected")
+  const handleNavButtonsOn = () => {
+    navButtons.current.classList.remove("hide")
+    //menuBtn.current.classList.toggle("selected")
+  }
+  const handleNavButtonsOff = () => {
+    navButtons.current.classList.add("hide")
+    // menuBtn.current.classList.toggle("selected")
   }
 
   useEffect(() => {
@@ -63,18 +67,18 @@ function Carousel({ components }) {
         data-glide-el="controls[nav]"
       >
         <button
-          ref={btnContact}
+          ref={btnHome}
           className="glide__bullet pixelated btn"
           data-glide-dir="=0"
-          onClick={handleNavButtons}
+          onClick={handleNavButtonsOff}
         >
           <span className="text">HOME</span>
         </button>
         <button
-          ref={btnContact}
+          ref={btnProjects}
           className="glide__bullet pixelated btn"
           data-glide-dir="=1"
-          onClick={handleNavButtons}
+          onClick={handleNavButtonsOff}
         >
           <span className="text">PROJECTS</span>
         </button>
@@ -82,7 +86,7 @@ function Carousel({ components }) {
           ref={btnContact}
           className="glide__bullet pixelated btn"
           data-glide-dir="=2"
-          onClick={handleNavButtons}
+          onClick={handleNavButtonsOff}
         >
           <span className="text">CONTACT</span>
         </button>
@@ -91,7 +95,7 @@ function Carousel({ components }) {
         <button
           ref={menuBtn}
           className="btn pixelated"
-          onClick={handleNavButtons}
+          onClick={handleNavButtonsOn}
         >
           <span className="text">MENU</span>
         </button>
