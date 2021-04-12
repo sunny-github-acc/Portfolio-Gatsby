@@ -119,7 +119,7 @@ const Hero = ({
         side: " -right ",
       },
       {
-        text: <span>Is that something you are also interested?</span>,
+        text: <span>Is that something you are also interested in?</span>,
         side: " -right ",
       },
     ],
