@@ -340,6 +340,7 @@ body {
 .main .hero .form-container .input {
   font-size: 1.1em;
   font-family: "DotGothic16", Georgia, serif;
+  max-width: 100%;
 }
 
 .main .hero .form-container .textarea:hover::-webkit-scrollbar,

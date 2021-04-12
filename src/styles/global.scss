@@ -271,7 +271,7 @@ body {
       .input {
         font-size: $font-size-big;
         font-family: "DotGothic16", Georgia, serif;
-
+        max-width: 100%;
         &:hover::-webkit-scrollbar {
           width: 1em;
         }
