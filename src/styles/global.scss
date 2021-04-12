@@ -52,6 +52,7 @@ body {
   }
   .btn {
     @extend %btn;
+    @extend %flex;
     color: $pixelatedBorder;
     font-weight: 1000;
     font-size: 1.2em;
@@ -59,7 +60,6 @@ body {
     height: 20px;
     .text {
       position: relative;
-      top: -5px;
     }
     &.glide__bullet--active,
     &.selected {
@@ -257,6 +257,7 @@ body {
       height: calc(100vh - #{$footerHeight} - #{$navHeight});
       bottom: -#{$footerHeight};
       position: absolute;
+      max-width: 100%;
       .scroll-container {
         max-height: 80%;
         margin: auto !important;
@@ -325,11 +326,13 @@ body {
           max-width: 420px;
           overflow: hidden;
           cursor: pointer;
+          &:hover {
+            .filter {
+              display: none;
+            }
+          }
           .image-container:hover .filter {
             opacity: 0.1;
-          }
-          .filter:hover {
-            opacity: 0;
           }
           .image,
           .filter {
@@ -523,6 +526,8 @@ body {
           display: inline-block;
           top: -60px;
           line-height: 20px;
+          padding-right: 10px;
+          padding-left: 10px;
         }
       }
       .hide {

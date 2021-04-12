@@ -14,20 +14,10 @@ function Carousel({ components }) {
   btnProjects = useRef(null)
   btnContact = useRef(null)
 
-  //  const home =  <button ref={btnHome} className="glide__bullet" data-glide-dir="=0">
-  //   1
-  // </button>
-  // const projects = <button ref={btnProjects} className="glide__bullet" data-glide-dir="=1">
-  //   2
-  // </button>
-  // const contact = <button ref={btnContact} className="glide__bullet" data-glide-dir="=2">
-  //   2
-  // </button>
-
   const navButtons = useRef(null)
   const menuBtn = useRef(null)
   const handleNavButtonsOn = () => {
-    navButtons.current.classList.remove("hide")
+    navButtons.current.classList.toggle("hide")
     //menuBtn.current.classList.toggle("selected")
   }
   const handleNavButtonsOff = () => {

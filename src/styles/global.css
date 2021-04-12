@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=DotGothic16&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap");
-.nav, .main .hero, .main .hero .hero-container, .main .hero .hero-container .scroll-container .hero-elements, .main .hero .form, .main .hero .form-container, .main .carousel-slides, .main .carousel-slides .projects, .main .carousel-slides .projects .project, .main .carousel-slides .projects .project .info, .contact, .contact .input-container, .contact .form, .glide__arrows {
+.nav, .nav .btn, .main .hero, .main .hero .hero-container, .main .hero .hero-container .scroll-container .hero-elements, .main .hero .form, .main .hero .form-container, .main .carousel-slides, .main .carousel-slides .projects, .main .carousel-slides .projects .project, .main .carousel-slides .projects .project .info, .contact, .contact .input-container, .contact .form, .glide__arrows {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -81,7 +81,6 @@ body {
 
 .nav .btn .text {
   position: relative;
-  top: -5px;
 }
 
 .nav .btn.glide__bullet--active, .nav .btn.selected {
@@ -323,6 +322,7 @@ body {
   height: calc(100vh - 50px - 60px);
   bottom: -50px;
   position: absolute;
+  max-width: 100%;
 }
 
 .main .hero .form-container .scroll-container {
@@ -410,12 +410,12 @@ body {
   cursor: pointer;
 }
 
-.main .carousel-slides .projects .project .image-container .image-container:hover .filter {
-  opacity: 0.1;
+.main .carousel-slides .projects .project .image-container:hover .filter {
+  display: none;
 }
 
-.main .carousel-slides .projects .project .image-container .filter:hover {
-  opacity: 0;
+.main .carousel-slides .projects .project .image-container .image-container:hover .filter {
+  opacity: 0.1;
 }
 
 .main .carousel-slides .projects .project .image-container .image,
@@ -648,6 +648,8 @@ body {
   display: inline-block;
   top: -60px;
   line-height: 20px;
+  padding-right: 10px;
+  padding-left: 10px;
 }
 
 .footer .icons .icon .hide {

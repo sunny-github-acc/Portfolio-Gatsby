@@ -15,7 +15,7 @@ export default function Footer() {
           }}
         >
           <span className="hide pixelated">
-            Click to copy karolis.kazak@gmail.com
+            Click on envelope to copy karolis.kazak@gmail.com
           </span>
         </i>{" "}
         <a
@@ -24,7 +24,9 @@ export default function Footer() {
         >
           <i className="icon fab fa-linkedin fa-lg"></i>
         </a>
-        <i className="icon far fa-file fa-lg"></i>
+        <i className="icon far fa-file fa-lg">
+          <span className="hide pixelated">Working on it</span>
+        </i>
       </section>
       <section className="copyright"> 2021 Karolis Kaz </section>
     </div>

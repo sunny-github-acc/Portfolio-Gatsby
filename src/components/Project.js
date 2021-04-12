@@ -4,7 +4,9 @@ const Project = ({ project }) => {
   return (
     <section className="project">
       <div className="image-container">
-        <img src={project.image} alt={project.alt} className="image" />
+        <a href={project.live} target="_blank">
+          <img src={project.image} alt={project.alt} className="image" />
+        </a>
         <div className="filter"></div>
       </div>
       <h1 className="title">{project.title}</h1>
