@@ -555,11 +555,16 @@ body {
           flex-direction: row;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  max-width: 100%;
 }
 
 .contact .input-container .h1 {
   padding-right: 10px;
   color: #aa3cdd;
+}
+
+.contact .input-container .label {
+  max-width: 100%;
 }
 
 .contact .input-container .input,
