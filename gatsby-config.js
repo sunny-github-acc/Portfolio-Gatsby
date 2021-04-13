@@ -27,6 +27,3 @@ module.exports = {
     },
   ],
 }
-module.exports = {
-  pathPrefix: "/portfolio",
-}
