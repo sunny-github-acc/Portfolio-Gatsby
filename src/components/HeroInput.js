@@ -39,7 +39,9 @@ const HeroInput = ({ handleSubmit, handleInput, visitorsInput }) => {
         onKeyPress={e => (e.key === "Enter" ? thisHandleSubmit(e) : null)}
       />
       <div className="submit-container">
-        <input className="submit" type="submit" name="Submit" value=">" />
+        <button type="submit" className="submit" name="Submit">
+          <i class="far fa-play-circle"></i>
+        </button>
       </div>
     </form>
   )

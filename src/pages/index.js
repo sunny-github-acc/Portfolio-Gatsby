@@ -24,10 +24,7 @@ export default function Home() {
   })
 
   const handleVisitorsAnswers = e => {
-    console.log("e: ", e)
     if (!e.length) return
-    console.log("e : ", e)
-    console.log("e : ", visitorsAnswers)
 
     setVisitorsAnswers({
       ...visitorsAnswers,
@@ -37,7 +34,6 @@ export default function Home() {
 
   const handleName = e => {
     visitorsAnswers.name = e.target.value
-    console.log(visitorsAnswers)
   }
 
   const handleEmail = e => {
