@@ -39,11 +39,13 @@ export default function Footer() {
         >
           <i className="icon fab fa-linkedin fa-lg"></i>
         </a>
-        <i className="icon far fa-file fa-lg">
-          <div className="container">
-            <div className="hide to-copy copied pixelated">Working on it</div>
-          </div>
-        </i>
+        <a
+          href="https://drive.google.com/file/d/1TudEb_jF17zQxBxbq687kNkZOUd3guxP/view?usp=sharing"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <i className="icon far fa-file fa-lg"></i>
+        </a>
       </section>
       <section className="copyright"> 2021 Karolis Kaz </section>
     </div>

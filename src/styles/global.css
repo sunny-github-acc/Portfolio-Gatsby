@@ -656,7 +656,7 @@ body {
 
 .footer .icons .icon:hover .container, .footer .icons .icon:active .container {
   position: absolute;
-  top: -50px;
+  bottom: 75px;
   left: 0;
   width: 100%;
 }

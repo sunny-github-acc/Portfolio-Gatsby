@@ -532,7 +532,7 @@ body {
         .container {
           @extend %flex;
           position: absolute;
-          top: -50px;
+          bottom: 75px;
           left: 0;
           width: 100%;
           .hide {

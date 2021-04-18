@@ -40,7 +40,7 @@ const HeroInput = ({ handleSubmit, handleInput, visitorsInput }) => {
       />
       <div className="submit-container">
         <button type="submit" className="submit" name="Submit">
-          <i class="far fa-play-circle"></i>
+          <i className="far fa-play-circle"></i>
         </button>
       </div>
     </form>
