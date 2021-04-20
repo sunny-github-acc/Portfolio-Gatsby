@@ -354,7 +354,7 @@ body {
           text-align: right;
           z-index: 11;
           color: $pixelatedColor;
-          background: $pixelatedBackground;
+          background: linear-gradient(to bottom, $pixelatedBackground, $pixelatedBackground);
           padding: 10px;
           white-space: normal;
         }

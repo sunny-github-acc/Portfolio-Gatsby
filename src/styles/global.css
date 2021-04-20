@@ -433,7 +433,8 @@ body {
   text-align: right;
   z-index: 11;
   color: #c776ec;
-  background: #f8dd71;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f8dd71), to(#f8dd71));
+  background: linear-gradient(to bottom, #f8dd71, #f8dd71);
   padding: 10px;
   white-space: normal;
 }
