@@ -644,7 +644,7 @@ body {
   }
 }
 .pixelated {
-  background: $pixelatedBackground !important;
+  background: linear-gradient(to bottom, $pixelatedBackground, $pixelatedBackground);
   box-shadow: 0 -6px 0 -2px $pixelatedBackground, 0 6px 0 -2px $pixelatedBackground, 0 -12px 0 -4px $pixelatedBackground,
     0 12px 0 -4px $pixelatedBackground, 0 -18px 0 -8px $pixelatedBackground, 0 18px 0 -8px $pixelatedBackground,
     0 -24px 0 -12px $pixelatedBackground, 0 24px 0 -12px $pixelatedBackground,
