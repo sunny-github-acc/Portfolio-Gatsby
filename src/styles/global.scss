@@ -644,7 +644,7 @@ body {
   }
 }
 .pixelated {
-  background: $pixelatedBackground;
+  background: $pixelatedBackground !important;
   box-shadow: 0 -6px 0 -2px $pixelatedBackground, 0 6px 0 -2px $pixelatedBackground, 0 -12px 0 -4px $pixelatedBackground,
     0 12px 0 -4px $pixelatedBackground, 0 -18px 0 -8px $pixelatedBackground, 0 18px 0 -8px $pixelatedBackground,
     0 -24px 0 -12px $pixelatedBackground, 0 24px 0 -12px $pixelatedBackground,
@@ -661,7 +661,7 @@ body {
     0 -6px 0 2px $pixelatedShadow, 0 6px 0 2px $pixelatedShadow, 0 -10px 0 0 $pixelatedShadow,
     0 10px 0 0 $pixelatedShadow, 0 -14px 0 -2px $pixelatedShadow, 0 14px 0 -2px $pixelatedShadow,
     0 -18px 0 -4px $pixelatedShadow, 0 18px 0 -4px $pixelatedShadow, 0 -24px 0 -8px $pixelatedShadow,
-    0 24px 0 -8px $pixelatedShadow, 0 -30px 0 -12px $pixelatedShadow, 0 30px 0 -12px $pixelatedShadow;
+    0 24px 0 -8px $pixelatedShadow, 0 -30px 0 -12px $pixelatedShadow, 0 30px 0 -12px $pixelatedShadow !important;
   .btn {
     @extend %btn;
     padding: 0 20px 0px 20px;
