@@ -23,11 +23,11 @@
     {
       "title": "Kilo Health project",
       "id": "3",
-      "image": "images/wcc.png",
+      "image": "images/gatherilo.png",
       "alt": "website image",
       "content": "Social media native app",
       "github": "https://github.com/sunny-github-acc/kilo-health-react-native-project",
-      "live": "https://vimeo.com/535825556",
+      "live": "https://github.com/sunny-github-acc/kilo-health-react-native-project",
       "tech": "react native, redux, typescript"
     }
   ]

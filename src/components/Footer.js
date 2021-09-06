@@ -40,7 +40,7 @@ export default function Footer() {
           <i className="icon fab fa-linkedin fa-lg"></i>
         </a>
         <a
-          href="https://drive.google.com/file/d/1TudEb_jF17zQxBxbq687kNkZOUd3guxP/view?usp=sharing"
+          href="drive.google.com/file/d/1nkZHI4_aDs7GSC66aKkdJZfUAE90L1tl/view"
           target="_blank"
           rel="noreferrer"
         >
