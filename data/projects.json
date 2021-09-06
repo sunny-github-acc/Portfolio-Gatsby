@@ -1,14 +1,14 @@
 {
   "projects": [
     {
-      "title": "Spintos laboratorija",
+      "title": "Kilo Health project",
       "id": "1",
-      "image": "images/spinta.png",
+      "image": "images/gatherilo.png",
       "alt": "website image",
-      "content": "Spintos laboratorija was my first project. It was supposed to be a frontend side of a mock fashion magazine/shop.",
-      "github": "https://github.com/sunny-github-acc/mock-landing-page-vanilla-javascript",
-      "live": "https://sunny-github-acc.github.io/mock-landing-page-vanilla-javascript/",
-      "tech": "html, css, react"
+      "content": "Social media native app",
+      "github": "https://github.com/sunny-github-acc/kilo-health-react-native-project",
+      "live": "https://github.com/sunny-github-acc/kilo-health-react-native-project",
+      "tech": "react native, redux, typescript"
     },
     {
       "title": "TietoEVRY task",
@@ -21,14 +21,14 @@
       "tech": "react"
     },
     {
-      "title": "Kilo Health project",
+      "title": "Spintos laboratorija",
       "id": "3",
-      "image": "images/gatherilo.png",
+      "image": "images/spinta.png",
       "alt": "website image",
-      "content": "Social media native app",
-      "github": "https://github.com/sunny-github-acc/kilo-health-react-native-project",
-      "live": "https://github.com/sunny-github-acc/kilo-health-react-native-project",
-      "tech": "react native, redux, typescript"
+      "content": "Spintos laboratorija was my first project. It was supposed to be a frontend side of a mock fashion magazine/shop.",
+      "github": "https://github.com/sunny-github-acc/mock-landing-page-vanilla-javascript",
+      "live": "https://sunny-github-acc.github.io/mock-landing-page-vanilla-javascript/",
+      "tech": "html, css, react"
     }
   ]
 }
