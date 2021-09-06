@@ -1,0 +1,2 @@
+(self.webpackChunkgatsby_starter_hello_world=self.webpackChunkgatsby_starter_hello_world||[]).push([[624],{4545:function(e,t,l){"use strict";l.r(t),l.d(t,{default:function(){return a}});var n=l(7294),r=l(9275);function a(){return n.createElement("div",null,n.createElement(r.Z,null,n.createElement("div",{className:"container"},n.createElement("section",{className:"work"},"Examples"))))}}}]);
+//# sourceMappingURL=component---src-pages-work-js-226d985086932221ba58.js.map
