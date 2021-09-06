@@ -6,29 +6,29 @@
       "image": "images/spinta.png",
       "alt": "website image",
       "content": "Spintos laboratorija was my first project. It was supposed to be a frontend side of a mock fashion magazine/shop.",
-      "github": "https://github.com/sunny-github-acc/spintos-laboratorija",
-      "live": "https://sunny-github-acc.github.io/spintos-laboratorija/",
+      "github": "https://github.com/sunny-github-acc/mock-landing-page-vanilla-javascript",
+      "live": "https://sunny-github-acc.github.io/mock-landing-page-vanilla-javascript/",
       "tech": "html, css, react"
     },
     {
-      "title": "This portfolio",
+      "title": "TietoEVRY task",
       "id": "2",
-      "image": "images/this.png",
+      "image": "images/tietoevry.png",
       "alt": "website image",
-      "content": "I made this portfolio to look cartoonish and interactive because I wanted to show my react skills and personality.",
-      "github": "https://github.com/sunny-github-acc/portfolio",
-      "live": "karoliskaz.eu",
-      "tech": "html, css, react"
+      "content": "Travel packer web app",
+      "github": "https://github.com/sunny-github-acc/tietoevry-react-task",
+      "live": "https://tietoevry-react-task.herokuapp.com",
+      "tech": "react"
     },
     {
-      "title": "Autocomplete input",
+      "title": "Kilo Health project",
       "id": "3",
       "image": "images/wcc.png",
       "alt": "website image",
-      "content": "This was a homework assignment for WCC Academy courses. It's purpose was to create autocompletion banner for a movie search.",
-      "github": "https://github.com/sunny-github-acc/wcc-autocomplete-tab",
+      "content": "Social media native app",
+      "github": "https://github.com/sunny-github-acc/kilo-health-react-native-project",
       "live": "https://vimeo.com/535825556",
-      "tech": "html, css, react, git"
+      "tech": "react native, redux, typescript"
     }
-  ] 
+  ]
 }
